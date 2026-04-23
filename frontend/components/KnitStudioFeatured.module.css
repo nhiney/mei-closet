@@ -1,0 +1,133 @@
+.section {
+  position: relative;
+  background-color: #f1efea; /* Warm beige */
+  padding: 8rem 2rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.textureOverlay {
+  position: absolute;
+  inset: 0;
+  background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.tag {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--knit-highlight);
+}
+
+.title {
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem;
+  line-height: 1.1;
+  color: var(--primary);
+  margin: 0;
+}
+
+.italic {
+  font-style: italic;
+  color: var(--knit-highlight);
+}
+
+.description {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  line-height: 1.6;
+  color: var(--primary);
+  opacity: 0.8;
+  max-width: 500px;
+}
+
+.button {
+  display: inline-flex;
+  margin-top: 1rem;
+  padding: 1rem 2.5rem;
+  background-color: var(--knit-highlight);
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: 0 10px 30px rgba(124, 137, 122, 0.2);
+  width: fit-content;
+}
+
+.button:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(124, 137, 122, 0.3);
+  filter: brightness(1.1);
+}
+
+.imageGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.imageWrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  border: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.imageWrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.imageWrapper:hover img {
+  transform: scale(1.1);
+}
+
+.img1 {
+  grid-column: span 2;
+  aspect-ratio: 16/9;
+}
+
+.img2, .img3 {
+  aspect-ratio: 1/1;
+}
+
+@media (max-width: 1024px) {
+  .container {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    text-align: center;
+  }
+  .content {
+    align-items: center;
+  }
+  .title {
+    font-size: 3rem;
+  }
+}

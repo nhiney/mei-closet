@@ -1,0 +1,165 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  top: 6rem;
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sidebarTitle {
+  font-family: var(--font-playfair);
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--foreground);
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.5rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Size Grid */
+.sizeGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.sizeBtn {
+  background: none;
+  border: 1px solid var(--border);
+  padding: 0.4rem 0;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--foreground);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 40px;
+  text-align: center;
+}
+
+.sizeBtn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.sizeBtnActive {
+  background: var(--foreground);
+  color: white;
+  border-color: var(--foreground);
+}
+
+.freesizeBtn {
+  flex-grow: 1;
+}
+
+/* Condition List */
+.conditionList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+}
+
+.checkbox {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 2px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s;
+}
+
+.checkbox:checked {
+  background: var(--foreground);
+  border-color: var(--foreground);
+}
+
+.checkbox:checked::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 1px;
+  width: 5px;
+  height: 9px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.checkboxText {
+  font-size: 0.85rem;
+  color: var(--muted-foreground);
+}
+
+.checkbox:checked ~ .checkboxText {
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+/* Color Grid */
+.colorGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.colorBtn {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.colorBtn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.colorBtnActive::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border: 2px solid var(--foreground);
+  border-radius: 50%;
+}
+
+/* Price Slider */
+.priceSlider {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+}
+
+.rangeInput {
+  width: 100%;
+  accent-color: var(--foreground);
+  cursor: pointer;
+}
+
+.priceLabels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--muted-foreground);
+  font-weight: 600;
+}

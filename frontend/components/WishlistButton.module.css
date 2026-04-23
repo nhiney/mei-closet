@@ -1,0 +1,39 @@
+.button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--glass-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.button:hover {
+  transform: scale(1.1);
+  background: var(--background);
+}
+
+.button:active {
+  transform: scale(0.9);
+}
+
+.icon {
+  font-size: 1.1rem;
+  line-height: 1;
+  transition: all 0.2s;
+}
+
+.active {
+  background: white;
+  border-color: #ff4d4d;
+}
+
+.active .icon {
+  filter: drop-shadow(0 0 4px rgba(255, 77, 77, 0.4));
+}

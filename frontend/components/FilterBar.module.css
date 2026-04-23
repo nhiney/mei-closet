@@ -1,0 +1,87 @@
+.filterBar {
+  position: sticky;
+  top: 60px; /* Below Navbar */
+  z-index: 50;
+  background-color: var(--background);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 0;
+  backdrop-filter: blur(10px);
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.categories {
+  display: flex;
+  gap: 2rem;
+  overflow-x: auto;
+  padding-bottom: 5px;
+  scrollbar-width: none; /* Hide scrollbar Firefox */
+  -ms-overflow-style: none; /* Hide scrollbar IE/Edge */
+}
+
+.categories::-webkit-scrollbar {
+  display: none; /* Hide scrollbar Chrome/Safari */
+}
+
+.navLink {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: var(--muted-foreground);
+  padding: 0.5rem 0.25rem;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  background-color: var(--primary);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.navLink:hover {
+  color: var(--primary);
+}
+
+.navLink:hover::after,
+.active::after {
+  width: 100%;
+}
+
+.active {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.actions {
+  display: none; /* Hide complex filters in the simplified Pinterest view */
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+  .categories {
+    gap: 1.5rem;
+    justify-content: flex-start;
+  }
+  .navLink {
+    font-size: 0.9rem;
+  }
+}
