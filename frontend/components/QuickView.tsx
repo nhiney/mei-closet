@@ -4,8 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { Modal } from "@/components/Modal";
+import { LoginPromptModal } from "@/components/LoginPromptModal";
 import { useCart } from "@/context/CartContext";
 import { useLanguage } from "@/context/LanguageContext";
+import { useRequireAuth } from "@/hooks/useRequireAuth";
 import { formatUsd } from "@/lib/format";
 import type { FeedProduct } from "@/features/feed/types";
 import styles from "./QuickView.module.css";
@@ -21,13 +23,14 @@ const SIZES = ["S", "M", "L", "XL"];
 export function QuickView({ product, isOpen, onClose }: QuickViewProps) {
   const { addToCart } = useCart();
   const { t } = useLanguage();
+  const { requireAuth, showLoginPrompt, closeLoginPrompt } = useRequireAuth();
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [added, setAdded] = useState(false);
 
   const sold = product.status === "sold";
   const free = product.price === 0;
 
-  const handleAddToCart = () => {
+  const doAdd = () => {
     addToCart({
       id: product.id,
       title: product.title,
@@ -36,13 +39,20 @@ export function QuickView({ product, isOpen, onClose }: QuickViewProps) {
       size: selectedSize ?? undefined,
     });
     setAdded(true);
-    setTimeout(() => {
-      setAdded(false);
-      onClose();
-    }, 1200);
+    setTimeout(() => { setAdded(false); onClose(); }, 1200);
   };
 
+  const handleAddToCart = () => requireAuth(doAdd);
+
   return (
+    <>
+    <LoginPromptModal
+      isOpen={showLoginPrompt}
+      onClose={closeLoginPrompt}
+      productTitle={product.title}
+      productImage={product.imageUrl}
+      action="cart"
+    />
     <Modal isOpen={isOpen} onClose={onClose}>
       <div className={styles.content}>
         <div className={styles.imageWrap}>
@@ -92,5 +102,6 @@ export function QuickView({ product, isOpen, onClose }: QuickViewProps) {
         </div>
       </div>
     </Modal>
+    </>
   );
 }

@@ -6,8 +6,11 @@ import { useRouter } from "next/navigation";
 import { ProductGallery } from "@/components/ProductGallery";
 import { SizeSelector, QuantitySelector, AddToCartButton, BuyNowButton } from "@/components/ProductActions";
 import { WishlistButton } from "@/components/WishlistButton";
+import { ReviewSection } from "@/components/ReviewSection";
+import { LoginPromptModal } from "@/components/LoginPromptModal";
 import { useCart } from "@/context/CartContext";
 import { useLanguage } from "@/context/LanguageContext";
+import { useRequireAuth } from "@/hooks/useRequireAuth";
 import { formatUsd } from "@/lib/format";
 import type { ApiProduct } from "@/lib/api/types";
 import type { FeedProduct } from "@/features/feed/types";
@@ -26,24 +29,21 @@ const conditionCopy: Record<string, Record<string, string>> = {
 
 const AVAILABLE_SIZES = ["S", "M", "L", "XL", "2XL"];
 
-const MOCK_REVIEWS = [
-  { id: 1, author: "Linh N.", rating: 5, text: "Đồ đẹp lắm, chất lượng tuyệt vời! Giao hàng nhanh.", date: "2025-12-10" },
-  { id: 2, author: "Mai T.", rating: 4, text: "Màu sắc đúng hình, chất vải mềm mại.", date: "2025-11-22" },
-  { id: 3, author: "Huy P.", rating: 5, text: "Very happy with this item. True vintage quality!", date: "2025-10-15" },
-];
 
 export function ProductDetailClient({ apiProduct, product, relatedProducts }: ProductDetailClientProps) {
   const { addToCart } = useCart();
   const { t, language } = useLanguage();
   const router = useRouter();
+  const { requireAuth, showLoginPrompt, closeLoginPrompt } = useRequireAuth();
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [quantity, setQuantity] = useState(1);
+  const [pendingAction, setPendingAction] = useState<"cart" | "buy">("cart");
 
   const sold = product.status === "sold";
   const free = product.price === 0;
   const conditionLabel = conditionCopy[language]?.[product.condition] ?? product.condition;
 
-  const handleAddToCart = () => {
+  const doAddToCart = () => {
     addToCart({
       id: product.id,
       title: product.title,
@@ -53,12 +53,28 @@ export function ProductDetailClient({ apiProduct, product, relatedProducts }: Pr
     }, quantity);
   };
 
+  const handleAddToCart = () => {
+    setPendingAction("cart");
+    requireAuth(doAddToCart);
+  };
+
   const handleBuyNow = () => {
-    handleAddToCart();
-    router.push("/cart");
+    setPendingAction("buy");
+    requireAuth(() => {
+      doAddToCart();
+      router.push("/cart");
+    });
   };
 
   return (
+    <>
+    <LoginPromptModal
+      isOpen={showLoginPrompt}
+      onClose={closeLoginPrompt}
+      productTitle={product.title}
+      productImage={product.imageUrl}
+      action={pendingAction}
+    />
     <div className={styles.page}>
       <div className={styles.container}>
         <Link href="/" className={styles.backLink}>
@@ -170,21 +186,7 @@ export function ProductDetailClient({ apiProduct, product, relatedProducts }: Pr
         </section>
 
         {/* Reviews */}
-        <section className={styles.reviews}>
-          <h3 className={styles.sectionTitle}>{t("product.reviews")} ({MOCK_REVIEWS.length})</h3>
-          <div className={styles.reviewList}>
-            {MOCK_REVIEWS.map((r) => (
-              <div key={r.id} className={styles.reviewCard}>
-                <div className={styles.reviewHeader}>
-                  <span className={styles.reviewAuthor}>{r.author}</span>
-                  <span className={styles.reviewStars}>{"★".repeat(r.rating)}{"☆".repeat(5 - r.rating)}</span>
-                </div>
-                <p className={styles.reviewText}>{r.text}</p>
-                <span className={styles.reviewDate}>{r.date}</span>
-              </div>
-            ))}
-          </div>
-        </section>
+        <ReviewSection productId={product.id} productTitle={product.title} />
 
         {/* Related Products */}
         {relatedProducts.length > 0 && (
@@ -205,5 +207,6 @@ export function ProductDetailClient({ apiProduct, product, relatedProducts }: Pr
         )}
       </div>
     </div>
+    </>
   );
 }

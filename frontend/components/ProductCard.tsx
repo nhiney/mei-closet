@@ -5,8 +5,10 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { WishlistButton } from "@/components/WishlistButton";
 import { QuickView } from "@/components/QuickView";
+import { LoginPromptModal } from "@/components/LoginPromptModal";
 import { useCart } from "@/context/CartContext";
 import { useLanguage } from "@/context/LanguageContext";
+import { useRequireAuth } from "@/hooks/useRequireAuth";
 import { formatUsd } from "@/lib/format";
 import type { FeedProduct } from "@/features/feed/types";
 import styles from "./ProductCard.module.css";
@@ -27,6 +29,7 @@ export function ProductCard({ product, variant = "pinterest" }: ProductCardProps
   const { id, title, price, status, imageUrl, isKnitwear } = product;
   const { t } = useLanguage();
   const { addToCart } = useCart();
+  const { requireAuth, showLoginPrompt, closeLoginPrompt } = useRequireAuth();
   const [quickViewOpen, setQuickViewOpen] = useState(false);
   const sold = status === "sold";
   const free = price === 0;
@@ -40,6 +43,14 @@ export function ProductCard({ product, variant = "pinterest" }: ProductCardProps
 
   if (variant === "structured") {
     return (
+      <>
+      <LoginPromptModal
+        isOpen={showLoginPrompt}
+        onClose={closeLoginPrompt}
+        productTitle={title}
+        productImage={imageUrl}
+        action="cart"
+      />
       <div className={styles.structuredCard}>
         <div className={styles.structuredImageContainer}>
           <Link href={`/products/${id}`}>
@@ -74,7 +85,7 @@ export function ProductCard({ product, variant = "pinterest" }: ProductCardProps
 
           {/* Hover Action: Add to Cart */}
           {!sold && (
-            <div className={styles.hoverActions} onClick={() => addToCart({ id, title, price, imageUrl })}>
+            <div className={styles.hoverActions} onClick={() => requireAuth(() => addToCart({ id, title, price, imageUrl }))}>
               <BagIcon />
               <span>{t("product.addToCart")}</span>
             </div>
@@ -94,6 +105,7 @@ export function ProductCard({ product, variant = "pinterest" }: ProductCardProps
 
         <QuickView product={product} isOpen={quickViewOpen} onClose={() => setQuickViewOpen(false)} />
       </div>
+      </>
     );
   }
 

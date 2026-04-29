@@ -105,9 +105,15 @@
 }
 
 .knitTag {
-  background-color: var(--knit-highlight);
-  color: white;
-  border-color: rgba(255,255,255,0.2);
+  background-color: #8B6F5C;
+  color: #FDFBF7;
+  border: 1px solid rgba(255,255,255,0.3);
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  text-transform: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  letter-spacing: 0.02em;
 }
 
 .statusOverlay {

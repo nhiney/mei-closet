@@ -118,6 +118,7 @@ export async function fetchProductsList(
   
   // Simple local filter for demonstration
   const filteredLocal = LOCAL_PRODUCTS.filter(p => {
+    if (params.isKnitwear !== undefined && (p as any).isKnitwear !== params.isKnitwear) return false;
     if (params.category && p.category !== params.category) return false;
     if (params.search && !p.title.toLowerCase().includes(params.search.toLowerCase())) return false;
     return true;

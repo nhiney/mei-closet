@@ -95,6 +95,7 @@ export function Navbar() {
               </div>
             </div>
 
+            <Link href="/shop-len" className={styles.navItem}>Shop Len 🧶</Link>
             <Link href="/?category=knitwear" className={styles.navItem}>{t("nav.knit")}</Link>
             
             <button 
@@ -203,6 +204,7 @@ export function Navbar() {
               </div>
             </div>
 
+            <Link href="/shop-len" onClick={() => setIsMobileMenuOpen(false)} className={styles.mobileNavItem}>Shop Len 🧶</Link>
             <Link href="/?category=knitwear" onClick={() => setIsMobileMenuOpen(false)} className={styles.mobileNavItem}>{t("nav.knit")}</Link>
             <Link href="#about" onClick={() => setIsMobileMenuOpen(false)} className={styles.mobileNavItem}>{t("nav.info")}</Link>
             <Link href="#footer" onClick={() => setIsMobileMenuOpen(false)} className={styles.mobileNavItem}>{t("nav.contact")}</Link>
