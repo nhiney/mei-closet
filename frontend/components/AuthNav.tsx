@@ -4,12 +4,15 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { clearSession, loadSession } from "@/lib/auth/session";
+import { AuthModal } from "./AuthModal";
 import styles from "./Navbar.module.css";
 
 export function AuthNav() {
   const router = useRouter();
   const [email, setEmail] = useState<string | null>(null);
   const [role, setRole] = useState<string | null>(null);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [authMode, setAuthMode] = useState<"login" | "register">("login");
 
   useEffect(() => {
     const sync = () => {
@@ -31,6 +34,11 @@ export function AuthNav() {
     setEmail(null);
     setRole(null);
     router.refresh();
+  }
+
+  function openAuth(mode: "login" | "register") {
+    setAuthMode(mode);
+    setIsAuthModalOpen(true);
   }
 
   if (email) {
@@ -58,12 +66,26 @@ export function AuthNav() {
 
   return (
     <>
-      <Link href="/login" className={styles.dropdownItem}>
+      <button 
+        onClick={() => openAuth("login")} 
+        className={styles.dropdownItem}
+        style={{ width: "100%", textAlign: "left", cursor: "pointer", border: "none", background: "none", fontFamily: "inherit" }}
+      >
         Đăng nhập
-      </Link>
-      <Link href="/register" className={styles.dropdownItem}>
+      </button>
+      <button 
+        onClick={() => openAuth("register")} 
+        className={styles.dropdownItem}
+        style={{ width: "100%", textAlign: "left", cursor: "pointer", border: "none", background: "none", fontFamily: "inherit" }}
+      >
         Đăng ký thành viên
-      </Link>
+      </button>
+
+      <AuthModal 
+        isOpen={isAuthModalOpen} 
+        onClose={() => setIsAuthModalOpen(false)} 
+        initialMode={authMode} 
+      />
     </>
   );
 }

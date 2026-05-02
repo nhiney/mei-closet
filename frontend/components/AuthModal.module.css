@@ -1,0 +1,273 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(31, 45, 36, 0.4);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 20px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modal {
+  background: #fff;
+  width: 100%;
+  max-width: 850px;
+  min-height: 550px;
+  border-radius: 30px;
+  overflow: hidden;
+  display: flex;
+  box-shadow: 0 30px 60px rgba(31, 45, 36, 0.15);
+  position: relative;
+  animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.closeBtn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: white;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: all 0.2s;
+  color: #1F2D24;
+}
+
+.closeBtn:hover {
+  transform: rotate(90deg);
+  background: #FDFBF7;
+}
+
+.imageSide {
+  width: 42%;
+  position: relative;
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .imageSide {
+    display: block;
+  }
+}
+
+.imageSide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(31, 45, 36, 0.1), rgba(31, 45, 36, 0.7));
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: white;
+}
+
+.imageOverlay h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.imageOverlay p {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
+.formSide {
+  flex: 1;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  background: #FDFBF7;
+}
+
+.tabs {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 40px;
+  border-bottom: 1px solid #E5E5E5;
+}
+
+.tabBtn {
+  background: none;
+  border: none;
+  padding: 0 0 12px 0;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #888;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s;
+}
+
+.tabBtnActive {
+  color: #1F2D24;
+}
+
+.tabBtnActive::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #C4963C;
+}
+
+.header {
+  margin-bottom: 30px;
+}
+
+.header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: #1F2D24;
+  margin-bottom: 8px;
+}
+
+.header p {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #1F2D24;
+  margin-bottom: 8px;
+}
+
+.input {
+  width: 100%;
+  background: white;
+  border: 1px solid #E5E5E5;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.3s;
+}
+
+.input:focus {
+  border-color: #C4963C;
+  box-shadow: 0 0 0 4px rgba(196, 150, 60, 0.05);
+}
+
+.submitBtn {
+  width: 100%;
+  background: #1F2D24;
+  color: white;
+  padding: 14px;
+  border-radius: 12px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 10px;
+}
+
+.submitBtn:hover {
+  background: #2A3D31;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(31, 45, 36, 0.1);
+}
+
+.errorMsg {
+  background: #FFF5F5;
+  color: #C53030;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  margin-bottom: 20px;
+  border: 1px solid #FEB2B2;
+}
+
+.socialAuth {
+  margin-top: 30px;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+  color: #999;
+  font-size: 0.8rem;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #E5E5E5;
+}
+
+.socialBtns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.socialBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  border: 1px solid #E5E5E5;
+  border-radius: 10px;
+  background: white;
+  color: #1F2D24;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.socialBtn:hover {
+  background: #F9F9F9;
+  border-color: #CCC;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@media (max-width: 600px) {
+  .formSide {
+    padding: 40px 25px;
+  }
+}

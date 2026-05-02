@@ -1,14 +1,14 @@
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(4px);
-  z-index: 1000;
+  background: rgba(31, 45, 36, 0.4);
+  backdrop-filter: blur(8px);
+  z-index: 10000;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
-  animation: fadeIn 0.2s ease;
+  padding: 1.5rem;
+  animation: fadeIn 0.3s ease-out;
 }
 
 @keyframes fadeIn {
@@ -17,142 +17,165 @@
 }
 
 .modal {
-  background: var(--background);
+  background: #FDFBF7;
   width: 100%;
-  max-width: 420px;
-  padding: 2.5rem;
+  max-width: 460px;
+  padding: 3.5rem 2.5rem;
+  border-radius: 40px;
   position: relative;
-  animation: slideUp 0.25s ease;
+  box-shadow: 0 25px 60px rgba(31, 45, 36, 0.15);
+  animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   text-align: center;
 }
 
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(30px) scale(0.95); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .closeBtn {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: none;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: white;
   border: none;
   cursor: pointer;
-  color: var(--muted-foreground);
-  padding: 0.25rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: color 0.15s;
-}
-
-.closeBtn:hover { color: var(--foreground); }
-
-.iconWrap {
-  width: 64px;
-  height: 64px;
-  background: var(--muted);
+  color: #1F2D24;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 1.5rem;
-  font-size: 1.75rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: all 0.2s;
+}
+
+.closeBtn:hover {
+  transform: rotate(90deg);
+  background: #f0f0f0;
+}
+
+.iconWrap {
+  width: 80px;
+  height: 80px;
+  background: #fff;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 2rem;
+  font-size: 2.5rem;
+  box-shadow: 0 10px 25px rgba(196, 150, 60, 0.15);
+  transform: rotate(-5deg);
 }
 
 .title {
   font-family: 'Playfair Display', serif;
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 700;
-  color: var(--foreground);
-  margin-bottom: 0.75rem;
+  color: #1F2D24;
+  margin-bottom: 1rem;
+  line-height: 1.2;
 }
 
 .desc {
-  font-size: 0.875rem;
-  color: var(--muted-foreground);
+  font-size: 0.95rem;
+  color: #666;
   line-height: 1.6;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .productHint {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  background: var(--muted);
-  padding: 0.75rem 1rem;
-  margin-bottom: 1.75rem;
+  gap: 1rem;
+  background: white;
+  padding: 1rem;
+  margin-bottom: 2.5rem;
   text-align: left;
+  border-radius: 20px;
+  border: 1px solid #E5E5E5;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
 }
 
 .productHintImage {
-  width: 48px;
-  height: 48px;
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
   object-fit: cover;
   flex-shrink: 0;
 }
 
 .productHintText {
-  font-size: 0.8rem;
-  color: var(--muted-foreground);
+  font-size: 0.85rem;
+  color: #888;
   line-height: 1.4;
 }
 
 .productHintTitle {
-  font-weight: 600;
-  color: var(--foreground);
+  font-weight: 700;
+  color: #1F2D24;
   display: block;
-  margin-bottom: 0.15rem;
+  margin-bottom: 0.2rem;
 }
 
 .actions {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 1rem;
 }
 
 .btnLogin {
   display: block;
   width: 100%;
-  padding: 0.875rem;
-  background: var(--primary);
-  color: var(--primary-foreground);
-  font-size: 0.85rem;
+  padding: 1.1rem;
+  background: #1F2D24;
+  color: white;
+  font-size: 0.9rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  border-radius: 16px;
   text-decoration: none;
   text-align: center;
-  transition: background 0.2s;
+  transition: all 0.3s;
   border: none;
   cursor: pointer;
 }
 
-.btnLogin:hover { background: #4a3228; }
+.btnLogin:hover {
+  background: #2A3D31;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(31, 45, 36, 0.15);
+}
 
 .btnRegister {
   display: block;
   width: 100%;
-  padding: 0.875rem;
+  padding: 1rem;
   background: transparent;
-  color: var(--primary);
-  font-size: 0.85rem;
+  color: #1F2D24;
+  font-size: 0.9rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
   text-decoration: none;
   text-align: center;
-  border: 1px solid var(--border);
-  transition: border-color 0.2s, color 0.2s;
+  border-radius: 16px;
+  border: 1px solid #E5E5E5;
+  transition: all 0.2s;
 }
 
 .btnRegister:hover {
-  border-color: var(--primary);
-  color: var(--foreground);
+  background: white;
+  border-color: #1F2D24;
 }
 
 .separator {
   font-size: 0.75rem;
-  color: var(--muted-foreground);
-  margin-top: 0.25rem;
+  color: #999;
+  margin-top: 0.5rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
 }
+
