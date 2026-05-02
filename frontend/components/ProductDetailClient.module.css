@@ -316,3 +316,16 @@
     font-size: 1.8rem;
   }
 }
+
+.conditionPct {
+  font-weight: 700;
+  color: #1F2D24;
+}
+
+.productLink {
+  color: #C4963C !important;
+  font-size: 0.85rem;
+  font-family: monospace;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}

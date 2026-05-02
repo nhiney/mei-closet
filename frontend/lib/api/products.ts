@@ -18,7 +18,7 @@ export class UnauthorizedError extends Error {
 }
 
 async function readErrorMessage(res: Response): Promise<string> {
-  let message = `Request failed (${res.status})`;
+  const message = `Request failed (${res.status})`;
   try {
     const body = (await res.json()) as
       | ApiErrorBody
@@ -113,12 +113,19 @@ export async function fetchProductsList(
     console.error("API Fetch Error (using local fallback):", err);
   }
   
-  // Merge local products that match filters
-  let items = [...apiItems];
+  // Filter API items to strictly separate knitwear
+  const filteredApiItems = apiItems.filter(p => {
+    if (params.isKnitwear === true) return p.isKnitwear === true;
+    return p.isKnitwear !== true;
+  });
+
+  let items = [...filteredApiItems];
   
-  // Simple local filter for demonstration
+  // Filter local products to strictly separate knitwear
   const filteredLocal = LOCAL_PRODUCTS.filter(p => {
-    if (params.isKnitwear !== undefined && (p as any).isKnitwear !== params.isKnitwear) return false;
+    if (params.isKnitwear === true) return p.isKnitwear === true;
+    if (p.isKnitwear === true) return false; // exclude knitwear if not explicitly requested
+    
     if (params.category && p.category !== params.category) return false;
     if (params.search && !p.title.toLowerCase().includes(params.search.toLowerCase())) return false;
     return true;

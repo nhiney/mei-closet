@@ -1,0 +1,108 @@
+.section {
+  padding: 8rem 2rem;
+  background: #FAF9F6;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.quizBox {
+  background: white;
+  border-radius: 30px;
+  padding: 5rem;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+.tag {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.4em;
+  color: #C4963C;
+  display: block;
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  color: #1F2D24;
+  margin-bottom: 2rem;
+}
+
+.progress {
+  font-size: 13px;
+  font-weight: 700;
+  color: #888;
+  margin-bottom: 4rem;
+}
+
+.questionCard {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.questionText {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1F2D24;
+  margin-bottom: 3rem;
+  line-height: 1.4;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.optionBtn {
+  background: #FAF9F6;
+  border: 1px solid #eee;
+  padding: 1.5rem 2.5rem;
+  border-radius: 15px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1F2D24;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.optionBtn:hover {
+  background: #1F2D24;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.resultTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  color: #1F2D24;
+  margin-bottom: 1.5rem;
+}
+
+.scoreText {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #C4963C;
+  margin-bottom: 2rem;
+}
+
+.desc {
+  font-size: 1.1rem;
+  color: #666;
+  line-height: 1.7;
+  margin-bottom: 3rem;
+}
+
+.resetBtn {
+  background: none;
+  border: none;
+  color: #888;
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: 600;
+}

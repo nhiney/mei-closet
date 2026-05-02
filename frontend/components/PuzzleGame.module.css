@@ -1,0 +1,162 @@
+.section {
+  padding: 8rem 4rem;
+  background: #E8EBE9;
+  position: relative;
+  overflow: hidden;
+  margin: 2rem;
+  border-radius: 60px;
+  border: 1px solid rgba(0,0,0,0.03);
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.introCard {
+  background: white;
+  padding: 5rem 4rem;
+  border-radius: 40px;
+  text-align: center;
+  box-shadow: 0 30px 60px rgba(31, 45, 36, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.tag {
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.4em;
+  color: #C4963C;
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  color: #1F2D24;
+  margin: 0;
+}
+
+.desc {
+  color: #666;
+  font-size: 1.05rem;
+  max-width: 500px;
+  line-height: 1.7;
+}
+
+.playBtn {
+  background: #1F2D24;
+  color: white;
+  border: none;
+  padding: 1.2rem 3.5rem;
+  border-radius: 4px; /* Minimalist luxury */
+  font-weight: 900;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  transition: all 0.4s;
+  margin-top: 1rem;
+}
+
+.playBtn:hover {
+  background: #C4963C;
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(196, 150, 60, 0.3);
+}
+
+.gameBox {
+  background: white;
+  padding: 4rem;
+  border-radius: 40px;
+  box-shadow: 0 40px 80px rgba(31, 45, 36, 0.08);
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .gameBox {
+    grid-template-columns: 1fr;
+    padding: 2.5rem;
+    gap: 3rem;
+  }
+}
+
+.gameInfo {
+  text-align: left;
+}
+
+.gameTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  color: #1F2D24;
+  margin-bottom: 1.5rem;
+}
+
+.puzzleGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  background: #F0F2F1;
+  padding: 12px;
+  border-radius: 24px;
+  aspect-ratio: 1/1;
+}
+
+.tile {
+  aspect-ratio: 1/1;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  perspective: 1000px;
+}
+
+.tileContent {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1F2D24 0%, #2D3E33 100%);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 900;
+  font-size: 1.8rem;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  transition: all 0.4s;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.tile:not(.empty):hover .tileContent {
+  transform: rotateX(15deg) rotateY(-15deg) translateZ(40px);
+  background: linear-gradient(135deg, #C4963C 0%, #D4A750 100%);
+  box-shadow: 25px 25px 50px rgba(196, 150, 60, 0.4);
+}
+
+.empty {
+  background: transparent;
+  cursor: default;
+}
+
+.reward {
+  margin-top: 2.5rem;
+  padding: 2rem;
+  background: #FAF9F6;
+  border-radius: 16px;
+  border: 1px dashed #C4963C;
+  text-align: center;
+}
+
+.reward b {
+  color: #C4963C;
+  font-size: 1.4rem;
+  display: block;
+  margin-top: 0.5rem;
+}

@@ -18,6 +18,7 @@ export function Navbar() {
   const { totalItems } = useCart();
   const isAdmin = user?.role === "admin";
   const searchParams = useSearchParams();
+  const [mounted, setMounted] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
@@ -25,6 +26,7 @@ export function Navbar() {
   const [isAccMobileOpen, setIsAccMobileOpen] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
@@ -95,8 +97,7 @@ export function Navbar() {
               </div>
             </div>
 
-            <Link href="/shop-len" className={styles.navItem}>Shop Len 🧶</Link>
-            <Link href="/?category=knitwear" className={styles.navItem}>{t("nav.knit")}</Link>
+            <Link href="/shop-len" className={styles.navItem}>{t("nav.knit")} 🧶</Link>
             
             <button 
               className={`${styles.navItem} ${isAboutOpen ? styles.active : ""}`}
@@ -134,7 +135,7 @@ export function Navbar() {
             <HeartIcon />
           </Link>
           <div className={styles.authWrapper}>
-            <Link href="/profile" className={styles.iconButton} aria-label="User Profile">
+            <Link href={user ? "/profile" : "/login"} className={styles.iconButton} aria-label="User Profile">
               <UserIcon />
             </Link>
             <div className={styles.authDropdown}>
@@ -143,7 +144,7 @@ export function Navbar() {
           </div>
           <Link href="/cart" className={`${styles.iconButton} ${styles.cartButton}`} aria-label="Shopping Cart">
             <CartIcon />
-            {totalItems > 0 && <span className={styles.cartBadge}>{totalItems}</span>}
+            {mounted && totalItems > 0 && <span className={styles.cartBadge}>{totalItems}</span>}
           </Link>
           <button 
             className={styles.mobileToggle} 
@@ -204,8 +205,7 @@ export function Navbar() {
               </div>
             </div>
 
-            <Link href="/shop-len" onClick={() => setIsMobileMenuOpen(false)} className={styles.mobileNavItem}>Shop Len 🧶</Link>
-            <Link href="/?category=knitwear" onClick={() => setIsMobileMenuOpen(false)} className={styles.mobileNavItem}>{t("nav.knit")}</Link>
+            <Link href="/shop-len" onClick={() => setIsMobileMenuOpen(false)} className={styles.mobileNavItem}>{t("nav.knit")} 🧶</Link>
             <Link href="#about" onClick={() => setIsMobileMenuOpen(false)} className={styles.mobileNavItem}>{t("nav.info")}</Link>
             <Link href="#footer" onClick={() => setIsMobileMenuOpen(false)} className={styles.mobileNavItem}>{t("nav.contact")}</Link>
 

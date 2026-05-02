@@ -1,0 +1,143 @@
+.section {
+  padding: 4rem 2rem;
+  background: radial-gradient(circle at center, #FAF9F6 0%, #E8DCCB 100%);
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.gameBox {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px);
+  padding: 2.5rem;
+  border-radius: 24px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+}
+
+.tag {
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.3em;
+  color: #C4963C;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  color: #1F2D24;
+  margin-bottom: 0.8rem;
+}
+
+.desc {
+  color: #666;
+  font-size: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+.stats {
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+  color: #1F2D24;
+  font-weight: 800;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.8rem;
+  perspective: 1000px;
+}
+
+.card {
+  aspect-ratio: 1/1;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.card:hover {
+  transform: scale(1.05);
+  z-index: 10;
+}
+
+.cardInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.card.flipped .cardInner {
+  transform: rotateY(180deg);
+}
+
+.cardFront, .cardBack {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 15px rgba(0,0,0,0.08);
+}
+
+.cardFront {
+  background: white;
+  color: #E8DCCB;
+  border: 1px solid #f0f0f0;
+}
+
+.cardBack {
+  background: linear-gradient(135deg, #1F2D24 0%, #2D3E33 100%);
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.winCard {
+  margin-top: 3rem;
+  background: white;
+  padding: 3rem;
+  border-radius: 20px;
+  border: 2px solid #C4963C;
+  box-shadow: 0 20px 40px rgba(196, 150, 60, 0.1);
+  animation: popUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popUp {
+  from { opacity: 0; transform: scale(0.8) translateY(20px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.reward {
+  font-size: 1.3rem;
+  margin: 1.5rem 0;
+  color: #C4963C;
+  font-weight: 900;
+}
+
+.restartBtn {
+  background: #1F2D24;
+  color: white;
+  border: none;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  font-weight: 800;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.restartBtn:hover {
+  background: #C4963C;
+  transform: translateY(-3px);
+}

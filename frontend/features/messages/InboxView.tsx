@@ -16,13 +16,13 @@ export function InboxView() {
 
   useEffect(() => {
     if (!mounted) return;
-    const session = loadSession();
-    if (!session?.accessToken) {
-      setRows([]);
-      return;
-    }
     let cancelled = false;
     void (async () => {
+      const session = loadSession();
+      if (!session?.accessToken) {
+        if (!cancelled) setRows([]);
+        return;
+      }
       try {
         const data = await fetchInbox(session.accessToken);
         if (!cancelled) setRows(data);

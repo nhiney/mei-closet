@@ -1,0 +1,227 @@
+.section {
+  padding: 8rem 2rem;
+  background: #fdfaf5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 700px;
+}
+
+.container {
+  width: 100%;
+  max-width: 900px;
+}
+
+.gameCard {
+  background: white;
+  border-radius: 40px;
+  padding: 4rem;
+  box-shadow: 0 40px 80px rgba(31, 45, 36, 0.08);
+  border: 1px solid rgba(196, 150, 60, 0.1);
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.tag {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.3em;
+  color: #C4963C;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  display: block;
+}
+
+.title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  color: #1F2D24;
+  margin-bottom: 2rem;
+  line-height: 1.2;
+}
+
+.desc {
+  font-size: 1.1rem;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  line-height: 1.7;
+}
+
+.startBtn {
+  background: #1F2D24;
+  color: white;
+  padding: 1.5rem 4rem;
+  border-radius: 50px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.startBtn:hover {
+  background: #C4963C;
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 15px 30px rgba(196, 150, 60, 0.2);
+}
+
+.progress {
+  font-size: 13px;
+  color: #C4963C;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.question {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  color: #1F2D24;
+  margin-bottom: 3rem;
+}
+
+.options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 640px) {
+  .options {
+    grid-template-columns: 1fr;
+  }
+}
+
+.option {
+  cursor: pointer;
+  group: hover;
+}
+
+.imgWrapper {
+  width: 100%;
+  aspect-ratio: 4/3;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  transition: all 0.4s ease;
+}
+
+.imgWrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.option:hover .imgWrapper {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(196, 150, 60, 0.2);
+}
+
+.option:hover img {
+  transform: scale(1.1);
+}
+
+.label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1F2D24;
+  transition: color 0.3s;
+}
+
+.option:hover .label {
+  color: #C4963C;
+}
+
+.result {
+  animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.resultTag {
+  color: #C4963C;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  font-size: 12px;
+}
+
+.resultTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem;
+  color: #1F2D24;
+  margin: 1rem 0 2rem;
+}
+
+.resultDesc {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 3rem;
+}
+
+.reward {
+  background: #FAF9F6;
+  padding: 2.5rem;
+  border-radius: 20px;
+  margin-bottom: 3rem;
+  border: 2px dashed #E8DCCB;
+}
+
+.rewardLabel {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #1F2D24;
+}
+
+.codeBox {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.codeBox code {
+  background: white;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #C4963C;
+  border: 1px solid #eee;
+  border-radius: 8px;
+}
+
+.copyBtn {
+  background: #1F2D24;
+  color: white;
+  border: none;
+  padding: 0 2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.copyBtn:hover {
+  background: #C4963C;
+}
+
+.restartBtn {
+  background: none;
+  border: none;
+  color: #888;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 0.9rem;
+}

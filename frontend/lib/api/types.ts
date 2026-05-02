@@ -18,6 +18,7 @@ export type ApiProduct = {
   handmade?: boolean;
   ownerId: string;
   status: string;
+  views?: number;
   createdAt: string;
   updatedAt: string;
 };

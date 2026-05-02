@@ -66,7 +66,9 @@ export function KnitStudioClient() {
       </section>
 
       {/* Components exactly like Home Page */}
-      <FilterBar />
+      <Suspense fallback={null}>
+        <FilterBar />
+      </Suspense>
       
       <main>
         {/* Main Product Section - Handles Knitwear Arrivals */}

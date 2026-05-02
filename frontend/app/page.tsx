@@ -1,12 +1,12 @@
-import { Suspense } from "react";
+import { Suspense } from "react"; // Home Page
 import { FeedSkeleton } from "@/components/FeedSkeleton";
 import { FeedSection } from "@/features/feed/FeedSection";
 import { Hero } from "@/components/Hero";
 import { FilterBar } from "@/components/FilterBar";
-import { KnitStudioFeatured } from "@/components/KnitStudioFeatured";
-import { BrandStory } from "@/components/BrandStory";
+import { PuzzleGame } from "@/components/PuzzleGame";
+import { StyleForecast } from "@/components/StyleForecast";
+import { AIAssistantHero } from "@/components/AIAssistantHero";
 import { NewArrivalSection } from "@/components/NewArrivalSection";
-import { DiscoveryHeading, EditorsPicksHeading, ExploreMoreHeading } from "@/components/HomeHeadings";
 import type { ListProductsParams } from "@/lib/api/products";
 
 type HomeProps = {
@@ -24,22 +24,25 @@ export default async function Home({ searchParams }: HomeProps) {
     priceMax: params.priceMax ? Number(params.priceMax) : undefined,
   };
 
-  const isFiltering = !!(fetchParams.search || fetchParams.category || fetchParams.priceMin || fetchParams.priceMax);
-
   return (
     <div className="bg-background min-h-screen">
       <Hero />
-      <FilterBar />
+      <Suspense fallback={null}>
+        <FilterBar />
+      </Suspense>
       
       <main>
-        {/* Main Product Section - Handles New Arrivals & Search Results */}
+        {/* Main Product Section */}
         <NewArrivalSection params={fetchParams} />
 
-        {/* Featured Brand Block */}
-        <KnitStudioFeatured />
+        {/* Daily Style Forecast */}
+        <StyleForecast />
 
-        {/* Brand Narrative */}
-        <BrandStory />
+        {/* Fashion Puzzle Challenge */}
+        <PuzzleGame />
+
+        {/* High-Impact AI Assistant Hero */}
+        <AIAssistantHero />
       </main>
     </div>
   );

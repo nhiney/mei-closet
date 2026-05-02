@@ -10,8 +10,12 @@ const server = createServer(app);
 initSocket(server);
 
 async function main() {
-  await connectMongo(env.MONGODB_URI);
-  await seedAdminUser();
+  try {
+    await connectMongo(env.MONGODB_URI);
+    await seedAdminUser();
+  } catch (err) {
+    console.error("❌ MongoDB connection failed. Server will start in limited mode.", err);
+  }
 
   server.listen(env.PORT, () => {
     console.log(

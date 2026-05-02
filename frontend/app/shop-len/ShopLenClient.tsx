@@ -10,6 +10,17 @@ import type { FeedProduct } from "@/features/feed/types";
 import styles from "./ShopLenClient.module.css";
 
 /* ── Data ── */
+/* ── Banner images (20 ảnh chuyển động) ── */
+const BANNER_IMAGES = [
+  "/banner/img1.jpg", "/banner/img2.jpg", "/banner/img3.jpg",
+  "/banner/img4.jpg", "/banner/img5.jpg", "/banner/img6.jpg",
+  "/banner/img7.jpg", "/banner/img8.jpg", "/banner/img9.png",
+  "/banner/img10.jpg", "/banner/img11.jpg", "/banner/img12.jpg",
+  "/banner/img13.jpg", "/banner/img14.jpg", "/banner/img15.jpg",
+  "/banner/img16.jpg", "/banner/img17.jpg", "/banner/img18.jpg",
+  "/banner/img19.jpg", "/banner/img20.jpg",
+];
+
 const CATEGORIES = [
   { id: "all",     label: "Tất cả",          count: "12+" },
   { id: "shirt",   label: "Áo Len",           count: "5" },
@@ -81,7 +92,14 @@ export function ShopLenClient() {
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [selectedCondition, setSelectedCondition] = useState<string | null>(null);
   const [sortBy, setSortBy] = useState("az");
+  const [bannerIndex, setBannerIndex] = useState(0);
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  /* auto-advance banner */
+  useEffect(() => {
+    const t = setInterval(() => setBannerIndex(p => (p + 1) % BANNER_IMAGES.length), 5000);
+    return () => clearInterval(t);
+  }, []);
 
   /* drag-scroll for collection row */
   useEffect(() => {
@@ -138,24 +156,33 @@ export function ShopLenClient() {
   return (
     <div className={styles.page}>
 
-      {/* ════════════ HERO ════════════ */}
+      {/* ════════════ HERO — compact fullwidth banner ════════════ */}
       <section className={styles.hero}>
-        {/* Left dark panel */}
-        <div className={styles.heroLeft}>
+        {/* Background slider */}
+        <div className={styles.heroBg}>
+          {BANNER_IMAGES.map((src, i) => (
+            <img
+              key={src}
+              src={src}
+              alt=""
+              className={`${styles.heroBgImg} ${i === bannerIndex ? styles.heroBgActive : ""}`}
+            />
+          ))}
+          <div className={styles.heroOverlay} />
+        </div>
+
+        {/* Content */}
+        <div className={styles.heroContent}>
           <div className={styles.heroEyebrow}>
             <span className={styles.heroEyebrowLine} />
             Mei Closet · Thủ Công Len
           </div>
-
           <h1 className={styles.heroTitle}>
-            Shop
-            <span className={styles.heroTitleAccent}>Len Handmade</span>
+            Shop <span className={styles.heroTitleAccent}>Len Handmade</span>
           </h1>
-
           <p className={styles.heroDesc}>
-            Từng mũi kim, từng sợi len — được chọn lọc và đan tay tỉ mỉ. Bộ sưu tập len chất lượng cao dành cho người yêu slow fashion.
+            Từng mũi kim, từng sợi len — được chọn lọc và đan tay tỉ mỉ.
           </p>
-
           <div className={styles.heroActions}>
             <Link href="#shop-len-area" className={styles.heroBtnPrimary}>
               Xem bộ sưu tập →
@@ -166,18 +193,16 @@ export function ShopLenClient() {
           </div>
         </div>
 
-        {/* Right image panel */}
-        <div className={styles.heroRight}>
-          <img
-            src="/products/shirts/ao-len-1.webp"
-            alt="Shop Len - Áo len thủ công"
-            className={styles.heroImage}
-          />
-          <div className={styles.heroImageBadge}>New Collection 2025</div>
-          <div className={styles.heroScrollHint}>
-            <span>Scroll</span>
-            <span className={styles.heroScrollLine} />
-          </div>
+        {/* Dot indicators */}
+        <div className={styles.heroDots}>
+          {BANNER_IMAGES.map((_, i) => (
+            <button
+              key={i}
+              className={`${styles.heroDot} ${i === bannerIndex ? styles.heroDotActive : ""}`}
+              onClick={() => setBannerIndex(i)}
+              aria-label={`Ảnh ${i + 1}`}
+            />
+          ))}
         </div>
       </section>
 

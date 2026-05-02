@@ -62,9 +62,11 @@ const translations: Record<Language, any> = {
       home: "Trang chủ",
       info: "Thông tin",
       contact: "Liên hệ",
-      knit: "Shop len",
+      knit: "Tiệm đồ thủ công",
       clothing: "Quần áo",
       accessories: "Phụ kiện",
+      login: "Đăng nhập",
+      register: "Đăng ký",
       
       // Subcategories
       shirts: "Áo",
@@ -143,7 +145,9 @@ const translations: Record<Language, any> = {
       length: "Dài",
       reviews: "Đánh Giá",
       related: "Sản Phẩm Liên Quan",
-      viewDetail: "Xem chi tiết"
+      viewDetail: "Xem chi tiết",
+      conditionPct: "Độ mới",
+      productLink: "Link sản phẩm"
     },
     cart: {
       title: "Giỏ Hàng",
@@ -181,9 +185,11 @@ const translations: Record<Language, any> = {
       home: "Home",
       info: "Info",
       contact: "Contact",
-      knit: "Knit Shop",
+      knit: "Knit Studio",
       clothing: "Clothing",
       accessories: "Accessories",
+      login: "Login",
+      register: "Register",
       
       // Subcategories
       shirts: "Shirts",
@@ -262,7 +268,9 @@ const translations: Record<Language, any> = {
       length: "Length",
       reviews: "Reviews",
       related: "Related Products",
-      viewDetail: "View details"
+      viewDetail: "View details",
+      conditionPct: "Condition",
+      productLink: "Product Link"
     },
     cart: {
       title: "Shopping Cart",

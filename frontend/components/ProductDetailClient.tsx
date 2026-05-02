@@ -137,6 +137,14 @@ export function ProductDetailClient({ apiProduct, product, relatedProducts }: Pr
                 <span className={styles.detailLabel}>{t("product.care")}</span>
                 <span>{t("product.careInstructions")}</span>
               </div>
+              <div className={styles.detailRow}>
+                <span className={styles.detailLabel}>{t("product.conditionPct")}</span>
+                <span className={styles.conditionPct}>98%</span>
+              </div>
+              <div className={styles.detailRow}>
+                <span className={styles.detailLabel}>{t("product.productLink")}</span>
+                <span className={styles.productLink}>mei-closet.vn/p/{product.id.slice(0, 8)}</span>
+              </div>
             </div>
 
             {/* Actions (only if available) */}
