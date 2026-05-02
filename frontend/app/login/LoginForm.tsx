@@ -43,7 +43,6 @@ export function LoginForm() {
       });
       router.push(next.startsWith("/") ? next : "/");
       router.refresh();
-      // Dispatch custom event for navbar sync
       window.dispatchEvent(new Event("mei-auth-change"));
     } catch (err) {
       setError(err instanceof Error ? err.message : "Đăng nhập thất bại");
@@ -54,82 +53,71 @@ export function LoginForm() {
 
   return (
     <div className={styles.authPage}>
-      {/* Left Image Panel */}
-      <div className={styles.imagePanel}>
-        <img src="/products/knitwear/tiencavotri.jpg" alt="Mei Closet Collection" />
-        <div className={styles.imageOverlay}>
-          <div className={styles.logoOverlay}>Mei Closet</div>
-          <h2 className={styles.imageTitle}>Vẻ đẹp của<br />sự hoài niệm</h2>
-          <p className={styles.imageSubtitle}>
-            Khám phá những món đồ thời trang secondhand độc bản và đồ thủ công đan tay đầy tâm huyết.
-          </p>
-        </div>
-      </div>
+      <div className={styles.impressiveCard}>
+        <div className={styles.formPanel}>
+          <div className={styles.topBar}>
+            <Link href="/" className={styles.backLink}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+              Trở về trang chủ
+            </Link>
+          </div>
 
-      {/* Right Form Panel */}
-      <div className={styles.formPanel}>
-        <div className={styles.topBar}>
-          <Link href="/" className={styles.backLink}>
-            ← Trở về trang chủ
-          </Link>
-        </div>
+          <div className={styles.header}>
+            <h1 className={styles.title}>Đăng Nhập</h1>
+            <p className={styles.subtitle}>Rất vui được gặp lại nàng tại ngôi nhà nhỏ của Mei</p>
+          </div>
 
-        <div className={styles.formContainer}>
-          <div className={styles.card}>
-            <div className={styles.header}>
-              <h1 className={styles.title}>Đăng Nhập</h1>
-              <p className={styles.subtitle}>Chào mừng nàng trở lại với Mei Closet</p>
+          <form onSubmit={onSubmit}>
+            <div className={styles.formGroup}>
+              <label className={styles.label}>Địa chỉ Email</label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                placeholder="nang@example.com"
+                className={styles.input}
+              />
             </div>
 
-            <form onSubmit={onSubmit}>
-              <div className={styles.formGroup}>
-                <label className={styles.label}>Địa chỉ Email</label>
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  placeholder="nang@example.com"
-                  className={styles.input}
-                />
+            <div className={styles.formGroup}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+                <label className={styles.label} style={{ marginBottom: 0 }}>Mật khẩu</label>
+                <Link href="/forgot-password" style={{ fontSize: '0.8rem', color: '#C4963C', fontWeight: '600' }}>Quên mật khẩu?</Link>
               </div>
-
-              <div className={styles.formGroup}>
-                <label className={styles.label}>Mật khẩu</label>
-                <input
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                  placeholder="••••••••"
-                  className={styles.input}
-                />
-              </div>
-
-              {error && <div className={styles.errorMsg}>{error}</div>}
-
-              <button type="submit" disabled={loading} className={styles.submitBtn}>
-                {loading ? "Đang xác thực..." : "Đăng nhập"}
-              </button>
-            </form>
-
-            <div className={styles.divider}>Hoặc tiếp tục với</div>
-
-            <div className={styles.socialGrid}>
-              <a href={`${getPublicApiBaseUrl()}/auth/google`} className={styles.socialBtn}>
-                <GoogleIcon /> Google
-              </a>
-              <a href={`${getPublicApiBaseUrl()}/auth/facebook`} className={styles.socialBtn}>
-                <FacebookIcon /> Facebook
-              </a>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                placeholder="••••••••"
+                className={styles.input}
+              />
             </div>
 
-            <div className={styles.footer}>
-              Nàng chưa có tài khoản?{" "}
-              <Link href={`/register?next=${encodeURIComponent(next)}`} className={styles.link}>
-                Đăng ký ngay
-              </Link>
-            </div>
+            {error && <div className={styles.errorMsg}>{error}</div>}
+
+            <button type="submit" disabled={loading} className={styles.submitBtn}>
+              {loading ? "Đang xác thực..." : "Đăng nhập ngay"}
+            </button>
+          </form>
+
+          <div className={styles.divider}>Hoặc đăng nhập bằng</div>
+
+          <div className={styles.socialGrid}>
+            <a href={`${getPublicApiBaseUrl()}/auth/google`} className={styles.socialBtn}>
+              <GoogleIcon /> <span>Google</span>
+            </a>
+            <a href={`${getPublicApiBaseUrl()}/auth/facebook`} className={styles.socialBtn}>
+              <FacebookIcon /> <span>Facebook</span>
+            </a>
+          </div>
+
+          <div className={styles.footer}>
+            Nàng chưa có tài khoản?{" "}
+            <Link href={`/register?next=${encodeURIComponent(next)}`} className={styles.link}>
+              Tạo tài khoản mới
+            </Link>
           </div>
         </div>
       </div>

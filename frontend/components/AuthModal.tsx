@@ -79,21 +79,6 @@ export function AuthModal({ isOpen, onClose, initialMode = "login" }: AuthModalP
           </svg>
         </button>
 
-        {/* Left Side: Artistic Panel */}
-        <div className={styles.imageSide}>
-          <img 
-            src={mode === "login" ? "/products/knitwear/tiencavotri.jpg" : "/products/knitwear/xuong-ca.jpg"} 
-            alt="Mei Closet" 
-          />
-          <div className={styles.imageOverlay}>
-            <h3>{mode === "login" ? "Chào mừng nàng trở lại" : "Tham gia cùng Mei Closet"}</h3>
-            <p>
-              {mode === "login" 
-                ? "Khám phá tủ đồ secondhand tuyển chọn và những món đồ đan tay đầy tâm huyết."
-                : "Bắt đầu hành trình thời trang bền vững và sở hữu những thiết kế độc bản."}
-            </p>
-          </div>
-        </div>
 
         {/* Right Side: Form Panel */}
         <div className={styles.formSide}>
