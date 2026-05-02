@@ -10,13 +10,13 @@ const credentialsSchema = z.object({
 
 export async function register(req: Request, res: Response) {
   const body = credentialsSchema.parse(req.body);
-  const data = await authService.registerUser(body.email, body.password);
+  const data = await authService.registerUser(body.email, body.password, req.ip);
   res.status(201).json(data);
 }
 
 export async function login(req: Request, res: Response) {
   const body = credentialsSchema.parse(req.body);
-  const data = await authService.loginUser(body.email, body.password);
+  const data = await authService.loginUser(body.email, body.password, req.ip);
   res.json(data);
 }
 
@@ -30,15 +30,21 @@ export async function getMe(req: Request, res: Response) {
   res.json(user);
 }
 
-export function oauthCallback(req: Request, res: Response) {
-  if (!req.user) {
+export async function oauthCallback(req: Request, res: Response) {
+  const user = req.user as any;
+  if (!user) {
     res.redirect(`${env.CORS_ORIGIN}/login?error=OAuthFailed`);
     return;
   }
-  // Note: we might want to leverage authService.issueToken here if exposed,
-  // but for OAuth we just redirect with tokens as it was.
-  // For strict parity with the prompt's "Services Layer" rule, we'll keep it simple.
+
+  // Issue token and update lastLogin
+  const { token } = await authService.issueToken(user._id.toString(), req.ip);
+
+  // Redirect to success page with tokens
   const redirectUrl = new URL(`${env.CORS_ORIGIN}/auth/success`);
-  // Simplified for this phase
+  redirectUrl.searchParams.set("token", token);
+  redirectUrl.searchParams.set("userId", user._id.toString());
+  redirectUrl.searchParams.set("email", user.email);
+
   res.redirect(redirectUrl.toString());
 }

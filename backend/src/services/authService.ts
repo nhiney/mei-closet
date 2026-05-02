@@ -18,7 +18,7 @@ export type AuthResponse = {
   };
 };
 
-function issueToken(userId: string): { token: string; expiresIn: number } {
+export async function issueToken(userId: string, ip?: string): Promise<{ token: string; expiresIn: number }> {
   const signOptions: SignOptions = {
     expiresIn: env.JWT_EXPIRES_IN as SignOptions["expiresIn"],
   };
@@ -28,6 +28,13 @@ function issueToken(userId: string): { token: string; expiresIn: number } {
     payload?.exp != null
       ? Math.max(1, payload.exp - Math.floor(Date.now() / 1000))
       : 3600;
+
+  // Update last login info
+  await User.findByIdAndUpdate(userId, {
+    lastLoginAt: new Date(),
+    lastLoginIp: ip,
+  });
+
   return { token, expiresIn };
 }
 
@@ -41,7 +48,7 @@ function serializeUser(user: any) {
   };
 }
 
-export async function registerUser(email: string, password: string): Promise<AuthResponse> {
+export async function registerUser(email: string, password: string, ip?: string): Promise<AuthResponse> {
   const existing = await User.findOne({ email: email.toLowerCase() });
   if (existing) {
     throw new HttpError(400, "Email already in use", "BAD_REQUEST");
@@ -53,14 +60,14 @@ export async function registerUser(email: string, password: string): Promise<Aut
     passwordHash,
   });
 
-  const { token, expiresIn } = issueToken(user._id.toString());
+  const { token, expiresIn } = await issueToken(user._id.toString(), ip);
   return {
     user: serializeUser(user),
     tokens: { accessToken: token, expiresIn },
   };
 }
 
-export async function loginUser(email: string, password: string): Promise<AuthResponse> {
+export async function loginUser(email: string, password: string, ip?: string): Promise<AuthResponse> {
   const user = await User.findOne({ email: email.toLowerCase() }).select("+passwordHash");
   
   if (!user?.passwordHash) {
@@ -72,7 +79,7 @@ export async function loginUser(email: string, password: string): Promise<AuthRe
     throw new HttpError(401, "Invalid email or password", "UNAUTHORIZED");
   }
 
-  const { token, expiresIn } = issueToken(user._id.toString());
+  const { token, expiresIn } = await issueToken(user._id.toString(), ip);
   return {
     user: serializeUser(user),
     tokens: { accessToken: token, expiresIn },

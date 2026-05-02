@@ -15,6 +15,8 @@ const userSchema = new Schema(
     googleId: { type: String, unique: true, sparse: true },
     facebookId: { type: String, unique: true, sparse: true },
     avatar: { type: String, default: null },
+    lastLoginAt: { type: Date },
+    lastLoginIp: { type: String },
     role: {
       type: String,
       enum: ["user", "admin"],

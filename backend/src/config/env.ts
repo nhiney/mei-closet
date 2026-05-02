@@ -53,6 +53,7 @@ export const env = {
   JWT_SECRET: jwtSecret(),
   JWT_EXPIRES_IN: process.env.JWT_EXPIRES_IN?.trim() ?? "7d",
   BCRYPT_ROUNDS: bcryptRounds(),
+  BACKEND_URL: process.env.BACKEND_URL?.trim() ?? (isProd ? "" : "http://localhost:4000"),
   OPENAI_API_KEY: openAiKey(),
   OPENAI_MODEL: process.env.OPENAI_MODEL?.trim() ?? "gpt-4o-mini",
   GOOGLE_CLIENT_ID: oauthKey("GOOGLE_CLIENT", "ID"),

@@ -18,7 +18,6 @@ passport.deserializeUser(async (id: string, done) => {
   }
 });
 
-const serverUrl = env.isProd ? "https://your-prod-api.com" : "http://localhost:4000";
 
 if (env.GOOGLE_CLIENT_ID && env.GOOGLE_CLIENT_SECRET) {
   passport.use(
@@ -26,7 +25,7 @@ if (env.GOOGLE_CLIENT_ID && env.GOOGLE_CLIENT_SECRET) {
       {
         clientID: env.GOOGLE_CLIENT_ID,
         clientSecret: env.GOOGLE_CLIENT_SECRET,
-        callbackURL: `${serverUrl}/api/auth/google/callback`,
+        callbackURL: `${env.BACKEND_URL}/api/auth/google/callback`,
       },
       async (_accessToken, _refreshToken, profile, done) => {
         try {
@@ -66,7 +65,7 @@ if (env.FACEBOOK_APP_ID && env.FACEBOOK_APP_SECRET) {
       {
         clientID: env.FACEBOOK_APP_ID,
         clientSecret: env.FACEBOOK_APP_SECRET,
-        callbackURL: `${serverUrl}/api/auth/facebook/callback`,
+        callbackURL: `${env.BACKEND_URL}/api/auth/facebook/callback`,
         profileFields: ["id", "emails", "name", "picture.type(large)"],
       },
       async (_accessToken, _refreshToken, profile, done) => {
