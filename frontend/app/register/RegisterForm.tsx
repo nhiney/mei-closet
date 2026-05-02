@@ -53,63 +53,86 @@ export function RegisterForm() {
 
   return (
     <div className={styles.authPage}>
-      <div className={styles.card}>
-        <div className={styles.header}>
-          <h1 className={styles.title}>Join the Archive</h1>
-          <p className={styles.subtitle}>Bắt đầu câu chuyện của nàng</p>
+      {/* Left Image Panel */}
+      <div className={styles.imagePanel}>
+        <img src="/products/knitwear/xuong-ca.jpg" alt="Mei Closet Craft" />
+        <div className={styles.imageOverlay}>
+          <div className={styles.logoOverlay}>Mei Closet</div>
+          <h2 className={styles.imageTitle}>Thời trang<br />là di sản</h2>
+          <p className={styles.imageSubtitle}>
+            Tham gia cộng đồng Mei Closet để cùng chia sẻ và lưu giữ những câu chuyện qua từng món đồ.
+          </p>
         </div>
+      </div>
 
-        <form onSubmit={onSubmit}>
-          <div className={styles.formGroup}>
-            <label className={styles.label}>Địa chỉ Email</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              placeholder="nàng@example.com"
-              className={styles.input}
-            />
-          </div>
-
-          <div className={styles.formGroup}>
-            <label className={styles.label}>Mật khẩu</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              placeholder="••••••••"
-              className={styles.input}
-            />
-            <p style={{fontSize: '0.6rem', color: '#888', marginTop: '0.5rem', textTransform: 'uppercase', letterSpacing: '0.05em'}}>
-              Tối thiểu 8 ký tự nàng nhé.
-            </p>
-          </div>
-
-          {error && <div className={styles.errorMsg}>{error}</div>}
-
-          <button type="submit" disabled={loading} className={styles.submitBtn}>
-            {loading ? "Đang tạo..." : "Tạo tài khoản"}
-          </button>
-        </form>
-
-        <div className={styles.divider}>Hoặc tiếp tục với</div>
-
-        <div className={styles.socialGrid}>
-          <a href={`${getPublicApiBaseUrl()}/auth/google`} className={styles.socialBtn}>
-            <GoogleIcon /> Google
-          </a>
-          <a href={`${getPublicApiBaseUrl()}/auth/facebook`} className={styles.socialBtn}>
-            <FacebookIcon /> Facebook
-          </a>
-        </div>
-
-        <div className={styles.footer}>
-          Nàng đã có tài khoản?{" "}
-          <Link href={`/login?next=${encodeURIComponent(next)}`} className={styles.link}>
-            Đăng nhập ngay
+      {/* Right Form Panel */}
+      <div className={styles.formPanel}>
+        <div className={styles.topBar}>
+          <Link href="/" className={styles.backLink}>
+            ← Trở về trang chủ
           </Link>
+        </div>
+
+        <div className={styles.formContainer}>
+          <div className={styles.card}>
+            <div className={styles.header}>
+              <h1 className={styles.title}>Đăng Ký</h1>
+              <p className={styles.subtitle}>Bắt đầu câu chuyện của nàng</p>
+            </div>
+
+            <form onSubmit={onSubmit}>
+              <div className={styles.formGroup}>
+                <label className={styles.label}>Địa chỉ Email</label>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  placeholder="nang@example.com"
+                  className={styles.input}
+                />
+              </div>
+
+              <div className={styles.formGroup}>
+                <label className={styles.label}>Mật khẩu</label>
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  placeholder="••••••••"
+                  className={styles.input}
+                />
+                <p style={{fontSize: '0.7rem', color: '#888', marginTop: '0.6rem', letterSpacing: '0.02em'}}>
+                  Tối thiểu 8 ký tự nàng nhé.
+                </p>
+              </div>
+
+              {error && <div className={styles.errorMsg}>{error}</div>}
+
+              <button type="submit" disabled={loading} className={styles.submitBtn}>
+                {loading ? "Đang tạo..." : "Tạo tài khoản"}
+              </button>
+            </form>
+
+            <div className={styles.divider}>Hoặc tiếp tục với</div>
+
+            <div className={styles.socialGrid}>
+              <a href={`${getPublicApiBaseUrl()}/auth/google`} className={styles.socialBtn}>
+                <GoogleIcon /> Google
+              </a>
+              <a href={`${getPublicApiBaseUrl()}/auth/facebook`} className={styles.socialBtn}>
+                <FacebookIcon /> Facebook
+              </a>
+            </div>
+
+            <div className={styles.footer}>
+              Nàng đã có tài khoản?{" "}
+              <Link href={`/login?next=${encodeURIComponent(next)}`} className={styles.link}>
+                Đăng nhập ngay
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </div>

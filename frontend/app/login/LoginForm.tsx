@@ -54,60 +54,83 @@ export function LoginForm() {
 
   return (
     <div className={styles.authPage}>
-      <div className={styles.card}>
-        <div className={styles.header}>
-          <h1 className={styles.title}>Welcome Back</h1>
-          <p className={styles.subtitle}>Tiếp tục hành trình cùng Mei</p>
+      {/* Left Image Panel */}
+      <div className={styles.imagePanel}>
+        <img src="/products/knitwear/tiencavotri.jpg" alt="Mei Closet Collection" />
+        <div className={styles.imageOverlay}>
+          <div className={styles.logoOverlay}>Mei Closet</div>
+          <h2 className={styles.imageTitle}>Vẻ đẹp của<br />sự hoài niệm</h2>
+          <p className={styles.imageSubtitle}>
+            Khám phá những món đồ thời trang secondhand độc bản và đồ thủ công đan tay đầy tâm huyết.
+          </p>
         </div>
+      </div>
 
-        <form onSubmit={onSubmit}>
-          <div className={styles.formGroup}>
-            <label className={styles.label}>Địa chỉ Email</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              placeholder="nàng@example.com"
-              className={styles.input}
-            />
-          </div>
-
-          <div className={styles.formGroup}>
-            <label className={styles.label}>Mật khẩu</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              placeholder="••••••••"
-              className={styles.input}
-            />
-          </div>
-
-          {error && <div className={styles.errorMsg}>{error}</div>}
-
-          <button type="submit" disabled={loading} className={styles.submitBtn}>
-            {loading ? "Đang xác thực..." : "Đăng nhập"}
-          </button>
-        </form>
-
-        <div className={styles.divider}>Hoặc tiếp tục với</div>
-
-        <div className={styles.socialGrid}>
-          <a href={`${getPublicApiBaseUrl()}/auth/google`} className={styles.socialBtn}>
-            <GoogleIcon /> Google
-          </a>
-          <a href={`${getPublicApiBaseUrl()}/auth/facebook`} className={styles.socialBtn}>
-            <FacebookIcon /> Facebook
-          </a>
-        </div>
-
-        <div className={styles.footer}>
-          Nàng chưa có tài khoản?{" "}
-          <Link href={`/register?next=${encodeURIComponent(next)}`} className={styles.link}>
-            Đăng ký ngay
+      {/* Right Form Panel */}
+      <div className={styles.formPanel}>
+        <div className={styles.topBar}>
+          <Link href="/" className={styles.backLink}>
+            ← Trở về trang chủ
           </Link>
+        </div>
+
+        <div className={styles.formContainer}>
+          <div className={styles.card}>
+            <div className={styles.header}>
+              <h1 className={styles.title}>Đăng Nhập</h1>
+              <p className={styles.subtitle}>Chào mừng nàng trở lại với Mei Closet</p>
+            </div>
+
+            <form onSubmit={onSubmit}>
+              <div className={styles.formGroup}>
+                <label className={styles.label}>Địa chỉ Email</label>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  placeholder="nang@example.com"
+                  className={styles.input}
+                />
+              </div>
+
+              <div className={styles.formGroup}>
+                <label className={styles.label}>Mật khẩu</label>
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  placeholder="••••••••"
+                  className={styles.input}
+                />
+              </div>
+
+              {error && <div className={styles.errorMsg}>{error}</div>}
+
+              <button type="submit" disabled={loading} className={styles.submitBtn}>
+                {loading ? "Đang xác thực..." : "Đăng nhập"}
+              </button>
+            </form>
+
+            <div className={styles.divider}>Hoặc tiếp tục với</div>
+
+            <div className={styles.socialGrid}>
+              <a href={`${getPublicApiBaseUrl()}/auth/google`} className={styles.socialBtn}>
+                <GoogleIcon /> Google
+              </a>
+              <a href={`${getPublicApiBaseUrl()}/auth/facebook`} className={styles.socialBtn}>
+                <FacebookIcon /> Facebook
+              </a>
+            </div>
+
+            <div className={styles.footer}>
+              Nàng chưa có tài khoản?{" "}
+              <Link href={`/register?next=${encodeURIComponent(next)}`} className={styles.link}>
+                Đăng ký ngay
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </div>
