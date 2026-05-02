@@ -35,14 +35,14 @@ const COLLECTIONS = [
     name: "Áo Len",
     category: "Knitwear",
     count: "5 sản phẩm",
-    image: "/products/shirts/ao-len-1.webp",
+    image: "/products/knitwear/xuong-ca.jpg",
   },
   {
     id: "jacket",
     name: "Cardigan",
     category: "Knitwear",
     count: "4 sản phẩm",
-    image: "/products/jackets/cadigant-red-1.webp",
+    image: "/products/knitwear/tiencavotri.jpg",
   },
   {
     id: "jacket",
@@ -187,8 +187,8 @@ export function ShopLenClient() {
             <Link href="#shop-len-area" className={styles.heroBtnPrimary}>
               Xem bộ sưu tập →
             </Link>
-            <Link href="/knit-studio" className={styles.heroBtnSecondary}>
-              Knit Studio ✦
+            <Link href="#about" className={styles.heroBtnSecondary}>
+              Về Shop Len ✦
             </Link>
           </div>
         </div>
@@ -353,12 +353,12 @@ export function ShopLenClient() {
         <div className={styles.aboutInner}>
           <div className={styles.aboutImageBlock}>
             <img
-              src="/products/jackets/cadigant-red-1.webp"
+              src="/products/knitwear/tiencavotri.jpg"
               alt="Câu chuyện Shop Len"
               className={styles.aboutImageMain}
             />
             <img
-              src="/products/shirts/ao-len-2.webp"
+              src="/products/knitwear/moc-khoa-ech.jpg"
               alt="Len thủ công"
               className={styles.aboutImageAccent}
             />

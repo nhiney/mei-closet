@@ -47,7 +47,7 @@ export function Footer() {
             <h4 className={styles.colTitle}>Khám phá</h4>
             <nav className={styles.linkNav}>
               <Link href="/">Bộ sưu tập mới</Link>
-              <Link href="/?category=knitwear">Knit Studio</Link>
+              <Link href="/shop-len">{t("nav.knit")}</Link>
               <Link href="/wishlist">Danh sách yêu thích</Link>
               <Link href="/about">Về Mei Closet</Link>
             </nav>

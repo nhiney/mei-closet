@@ -39,7 +39,7 @@ export function AboutSection({ isOpen }: AboutSectionProps) {
               <p className={styles.description}>
                 {t("about.studioDesc")}
               </p>
-              <Link href="/knit-studio" className={styles.knitButton}>
+              <Link href="/shop-len" className={styles.knitButton}>
                 {t("nav.knit")} 🧶
               </Link>
             </div>

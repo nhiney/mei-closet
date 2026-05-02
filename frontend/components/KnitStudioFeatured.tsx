@@ -38,8 +38,8 @@ export function KnitStudioFeatured() {
               ))}
             </div>
 
-            <Link href="/knit-studio" className={styles.button}>
-              Khám phá Knit Studio
+            <Link href="/shop-len" className={styles.button}>
+              Khám phá Tiệm Đồ Thủ Công
             </Link>
           </div>
           

@@ -58,7 +58,7 @@ export function Hero() {
           <Link href="/#feed" className={styles.btnPrimary}>
             {t("hero.explore")}
           </Link>
-          <Link href="/knit-studio" className={styles.btnSecondary}>
+          <Link href="/shop-len" className={styles.btnSecondary}>
             {t("hero.knitStudio")} 🧶
           </Link>
         </div>
