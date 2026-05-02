@@ -8,7 +8,7 @@ export function getPublicApiBaseUrl(): string {
     if (process.env.NODE_ENV === "production") {
       throw new Error("NEXT_PUBLIC_API_URL environment variable is required in production");
     }
-    return "http://localhost:4000/api";
+    return "http://localhost:3001/api";
   }
   
   return url.endsWith("/api") ? url : `${url}/api`;
@@ -23,6 +23,6 @@ export function getSocketOrigin(): string {
     const apiBase = getPublicApiBaseUrl();
     return new URL(apiBase).origin;
   } catch {
-    return "http://localhost:4000";
+    return "http://localhost:3001";
   }
 }

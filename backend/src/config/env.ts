@@ -6,9 +6,9 @@ const isProd = process.env.NODE_ENV === "production";
 
 function port(): number {
   const raw = process.env.PORT;
-  if (!raw) return 4000;
+  if (!raw) return 3001;
   const n = Number(raw);
-  return Number.isFinite(n) && n > 0 ? n : 4000;
+  return Number.isFinite(n) && n > 0 ? n : 3001;
 }
 
 function mongoUri(): string {
