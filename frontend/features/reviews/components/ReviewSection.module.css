@@ -1,0 +1,322 @@
+/* ===== Review Section Styles ===== */
+
+.section {
+  padding: 4rem 0;
+  border-top: 1px solid var(--color-divider);
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.sectionTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: var(--color-foreground);
+  margin: 0;
+}
+
+/* Rating Summary */
+.ratingSummary {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.avgRating {
+  text-align: center;
+}
+
+.avgNumber {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1;
+  display: block;
+}
+
+.avgTotal {
+  font-size: 0.78rem;
+  color: var(--color-foreground-muted);
+  margin-top: 0.25rem;
+}
+
+.ratingBars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 160px;
+}
+
+.ratingBar {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.barLabel {
+  font-size: 0.75rem;
+  color: var(--color-foreground-muted);
+  width: 12px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.barTrack {
+  flex: 1;
+  height: 6px;
+  background: var(--color-border);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  background: var(--color-accent);
+  border-radius: 99px;
+  transition: width 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.barCount {
+  font-size: 0.7rem;
+  color: var(--color-foreground-muted);
+  width: 20px;
+}
+
+/* Write Review */
+.writeReview {
+  background: var(--color-background-alt);
+  border: 1px solid var(--color-border);
+  padding: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.writeTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: var(--color-foreground);
+  margin-bottom: 1.5rem;
+}
+
+.ratingPrompt {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.ratingPromptLabel {
+  font-size: 0.82rem;
+  color: var(--color-foreground-muted);
+  font-weight: 600;
+}
+
+.reviewTextarea {
+  width: 100%;
+  background: var(--color-background);
+  border: 1px solid var(--color-border-strong);
+  padding: 1rem 1.2rem;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: var(--color-foreground);
+  resize: vertical;
+  min-height: 100px;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  border-radius: 0;
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+}
+
+.reviewTextarea:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(180, 83, 9, 0.1);
+}
+
+.submitBtn {
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 0.9rem 2.5rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submitBtn:hover:not(:disabled) {
+  background: var(--color-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(180, 83, 9, 0.2);
+}
+
+.submitBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.loginPrompt {
+  padding: 1.5rem;
+  background: var(--color-secondary);
+  border: 1px dashed var(--color-border-strong);
+  text-align: center;
+  font-size: 0.88rem;
+  color: var(--color-foreground-muted);
+  margin-bottom: 2.5rem;
+}
+
+.loginPrompt a {
+  color: var(--color-primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.loginPrompt a:hover { text-decoration: underline; }
+
+.alreadyReviewed {
+  padding: 1rem 1.5rem;
+  background: var(--color-secondary);
+  border-left: 4px solid var(--color-accent);
+  font-size: 0.85rem;
+  color: var(--color-foreground-muted);
+  margin-bottom: 2rem;
+}
+
+/* Review List */
+.reviewList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.noReviews {
+  text-align: center;
+  padding: 3rem;
+  color: var(--color-foreground-muted);
+  font-size: 0.9rem;
+}
+
+/* Review Card */
+.reviewCard {
+  background: var(--color-background-alt);
+  border: 1px solid var(--color-border);
+  padding: 1.5rem;
+  transition: border-color 0.3s;
+}
+
+.reviewCard:hover {
+  border-color: var(--color-border-strong);
+}
+
+.reviewHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.reviewerInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.reviewerAvatar {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.reviewerName {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--color-foreground);
+}
+
+.reviewDate {
+  font-size: 0.75rem;
+  color: var(--color-foreground-muted);
+  margin-top: 0.1rem;
+}
+
+.reviewMeta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+}
+
+.reviewContent {
+  font-size: 0.9rem;
+  color: var(--color-foreground);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.reviewFooter {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.helpfulBtn {
+  background: none;
+  border: 1px solid var(--color-border);
+  color: var(--color-foreground-muted);
+  padding: 0.3rem 0.8rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.helpfulBtn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.helpfulCount {
+  font-size: 0.75rem;
+  color: var(--color-foreground-muted);
+}
+
+/* ─── Star Rating Component ─── */
+.stars {
+  display: flex;
+  gap: 3px;
+}
+
+.star {
+  font-size: 1.2rem;
+  cursor: default;
+  transition: transform 0.2s;
+}
+
+.starInteractive {
+  cursor: pointer;
+}
+
+.starInteractive:hover {
+  transform: scale(1.2);
+}

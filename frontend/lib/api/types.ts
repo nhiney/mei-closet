@@ -59,3 +59,39 @@ export type CreateProductRequest = {
   knitType?: "scarf" | "sweater" | "hat" | "custom" | null;
   handmade?: boolean;
 };
+
+// Order Types
+export type ApiShippingInfo = {
+  fullName: string;
+  phone: string;
+  address: string;
+  city: string;
+  note?: string;
+};
+
+export type ApiOrderItem = {
+  productId: string;
+  title: string;
+  price: number;
+  quantity: number;
+  size?: string;
+  imageUrl: string;
+};
+
+export type ApiOrder = {
+  _id: string;
+  userId: string;
+  items: ApiOrderItem[];
+  shippingInfo: ApiShippingInfo;
+  paymentMethod: "cod" | "bank_transfer" | "momo";
+  totalPrice: number;
+  status: "pending" | "confirmed" | "shipping" | "delivered" | "cancelled";
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type CreateOrderRequest = {
+  items: ApiOrderItem[];
+  shippingInfo: ApiShippingInfo;
+  paymentMethod: string;
+};

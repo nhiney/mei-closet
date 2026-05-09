@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { ProductGrid } from "@/components/ProductGrid";
+import { ProductGrid } from "@/components/product/ProductGrid";
 import { fetchWishlist } from "@/lib/api/products";
 import { mapApiProductsToFeed } from "@/features/feed/mapApiProductToFeed";
 import { FeedProduct } from "@/features/feed/types";

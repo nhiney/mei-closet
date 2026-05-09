@@ -1,0 +1,31 @@
+/**
+ * Mei Closet Typography System
+ */
+:root {
+  /* Font Families */
+  --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Playfair Display', serif;
+  --font-display: 'Cormorant Garamond', serif;
+  --font-handwritten: 'Dancing Script', cursive;
+
+  /* Font Sizes */
+  --size-xs: 0.75rem;   /* 12px */
+  --size-sm: 0.875rem;  /* 14px */
+  --size-base: 1rem;    /* 16px */
+  --size-lg: 1.125rem;  /* 18px */
+  --size-xl: 1.25rem;   /* 20px */
+  --size-2xl: 1.5rem;   /* 24px */
+  --size-3xl: 2rem;     /* 32px */
+  --size-4xl: 3rem;     /* 48px */
+
+  /* Line Heights */
+  --leading-tight: 1.2;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.8;
+
+  /* Letter Spacing */
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.05em;
+  --tracking-wider: 0.1em;
+}

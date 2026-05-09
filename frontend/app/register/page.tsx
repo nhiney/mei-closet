@@ -1,10 +1,11 @@
-import { Suspense } from "react";
-import { RegisterForm } from "./RegisterForm";
+import { redirect } from "next/navigation";
 
-export default function RegisterPage() {
-  return (
-    <Suspense fallback={<div className="min-h-screen w-full flex items-center justify-center">Loading...</div>}>
-      <RegisterForm />
-    </Suspense>
-  );
+export default async function RegisterRedirectPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  const params = await searchParams;
+  const next = params.next ? `&next=${params.next}` : "";
+  redirect(`/login?mode=register${next}`);
 }

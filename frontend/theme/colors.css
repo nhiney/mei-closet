@@ -1,0 +1,63 @@
+/**
+ * Mei Closet Color Palette
+ * Pinterest-Inspired Modern Theme
+ * Vibrant Red, Crisp White, and Sophisticated Greys
+ */
+:root {
+  /* Core Colors - Pinterest Red Aesthetic */
+  --color-primary: #E60023;        /* Signature Pinterest Red */
+  --color-primary-light: #FF3B30;  /* Bright Vibrant Red */
+  --color-primary-dark: #AD0000;   /* Deep Sophisticated Red */
+  
+  --color-accent: #0076D3;         /* Classic Link Blue (Pinterest style) */
+  --color-accent-light: #E1F5FE;
+  --color-accent-dark: #00569E;
+
+  --color-secondary: #F0F0F0;      /* Soft Light Grey for subtle areas */
+  
+  --color-background: #FFFFFF;     /* Pure Crisp White */
+  --color-background-alt: #F7F7F7; /* Ultra Light Grey */
+  
+  --color-foreground: #111111;     /* True Black for maximum readability */
+  --color-foreground-muted: #767676; /* Medium Grey for metadata/muted text */
+  
+  /* Status Colors */
+  --color-success: #00875A;       
+  --color-error: #E60023;
+  
+  /* UI Tokens */
+  --color-border: #EFEFEF;
+  --color-border-strong: #DDDDDD;
+  --color-divider: #EEEEEE;
+  
+  /* Overlays */
+  --color-overlay: rgba(0, 0, 0, 0.5);
+  --color-glass: rgba(255, 255, 255, 0.95);
+}
+
+/* 🌙 FULL DARK MODE OVERRIDES 🌙 */
+[data-theme='dark'] {
+  --color-background: #111111;      /* Deep Black */
+  --color-background-alt: #1A1A1A;  /* Off-Black */
+  
+  --color-foreground: #FFFFFF;      /* Pure White */
+  --color-foreground-muted: #A5A5A5; /* Lighter Grey */
+  
+  --color-primary: #E60023;         /* Keep the signature Red */
+  --color-primary-light: #FF3B30;
+  --color-primary-dark: #AD0000;
+  
+  --color-accent: #2196F3;
+  --color-secondary: #2A2A2A;
+  
+  --color-glass: rgba(17, 17, 17, 0.9);
+  --color-border: #333333;
+  --color-border-strong: #444444;
+  --color-divider: #222222;
+  
+  --color-overlay: rgba(0, 0, 0, 0.8);
+  
+  /* Status Adjustment */
+  --color-success: #36B37E;
+  --color-error: #FF5252;
+}

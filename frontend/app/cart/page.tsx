@@ -111,9 +111,9 @@ export default function CartPage() {
           <span className={styles.totalValue}>{formatUsd(totalPrice)}</span>
         </div>
         <div className={styles.actions}>
-          <button className={styles.checkoutBtn}>
+          <Link href="/checkout" className={styles.checkoutBtn} style={{ textDecoration: "none", textAlign: "center" }}>
             {t("cart.checkout")}
-          </button>
+          </Link>
           <button className={styles.clearBtn} onClick={clearCart}>
             {t("cart.clear")}
           </button>

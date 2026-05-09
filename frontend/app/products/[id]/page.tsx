@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { fetchProductById, fetchProductsList } from "@/lib/api/products";
 import { mapApiProductToFeed, mapApiProductsToFeed } from "@/features/feed/mapApiProductToFeed";
-import { ProductDetailClient } from "@/components/ProductDetailClient";
+import { ProductDetailClient } from "@/components/product/ProductDetailClient";
 
 type Props = { params: Promise<{ id: string }> };
 

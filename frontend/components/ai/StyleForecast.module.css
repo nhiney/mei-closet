@@ -1,0 +1,183 @@
+.section {
+  padding: 8rem 4rem;
+  background: var(--color-background-alt);
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  border-radius: 0; /* Square section */
+  border-bottom: 1px solid var(--color-divider);
+}
+
+/* Subtle background decoration */
+.section::before {
+  content: "";
+  position: absolute;
+  top: -10%;
+  right: -10%;
+  width: 40%;
+  height: 60%;
+  background: radial-gradient(circle, var(--color-secondary) 0%, transparent 70%);
+  filter: blur(80px);
+  opacity: 0.3;
+  z-index: 0;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.forecastLayout {
+  display: flex;
+  gap: 5rem;
+  align-items: center;
+}
+
+@media (max-width: 900px) {
+  .forecastLayout {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.intro {
+  flex: 1;
+}
+
+.tag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5em;
+  color: var(--color-accent);
+  display: block;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.2rem;
+  color: var(--color-primary);
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.desc {
+  font-size: 1rem;
+  color: var(--color-foreground-muted);
+  line-height: 1.8;
+  margin-bottom: 3rem;
+}
+
+.content {
+  flex: 1.2;
+  background: var(--color-background);
+  padding: 3.5rem;
+  border-radius: 4px; /* Square content area */
+  box-shadow: 0 20px 40px rgba(74, 55, 40, 0.03);
+  border: 1px solid var(--color-border);
+}
+
+.moodGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.moodBtn {
+  background: white;
+  border: 1px solid var(--color-border);
+  padding: 2rem 1.5rem;
+  border-radius: 2px; /* Square buttons */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.moodBtn:hover {
+  transform: translateY(-4px); /* Subtler hover */
+  border-color: var(--color-accent);
+  box-shadow: 0 10px 20px rgba(193, 154, 107, 0.1);
+}
+
+.moodBtn.active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+}
+
+.emoji {
+  font-size: 2.2rem;
+}
+
+.label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.result {
+  animation: reveal 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes reveal {
+  from { opacity: 0; transform: scale(0.98) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.resultCard {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 2px; /* Square result card */
+  border: 1px solid var(--color-accent-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.resultCard h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+.tip {
+  font-size: 0.95rem;
+  color: var(--color-foreground-muted);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+
+.lucky {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px dashed var(--color-border);
+}
+
+.lucky span {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.lucky strong {
+  font-size: 1rem;
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+@media (max-width: 480px) {
+  .section { padding: 4rem 1.5rem; }
+  .forecastLayout { gap: 3rem; }
+}

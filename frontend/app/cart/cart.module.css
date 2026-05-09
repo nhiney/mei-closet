@@ -78,7 +78,7 @@
 .cartItem {
   display: flex;
   gap: 1.5rem;
-  background: white;
+  background: var(--color-background-alt);
   border: 1px solid var(--border);
   padding: 1.25rem;
   transition: box-shadow 0.3s ease;

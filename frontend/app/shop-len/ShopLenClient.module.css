@@ -4,17 +4,17 @@
    ──────────────────────────────────────────── */
 
 :root {
-  --sl-bg:       #FAFAF8;
-  --sl-dark:     #3B423C;
-  --sl-mid:      #5E6B61;
-  --sl-sage:     #8F9C90;
-  --sl-gold:     #B88A44;
-  --sl-muted:    #F2EBE1;
-  --sl-text:     #2D332E;
-  --sl-subtext:  #6D7A70;
-  --sl-border:   #D6D0C4;
+  --sl-bg:       var(--color-background);
+  --sl-dark:     var(--color-primary-dark);
+  --sl-mid:      var(--color-primary);
+  --sl-sage:     var(--color-accent);
+  --sl-gold:     var(--color-accent);
+  --sl-muted:    var(--color-secondary);
+  --sl-text:     var(--color-foreground);
+  --sl-subtext:  var(--color-foreground-muted);
+  --sl-border:   var(--color-border);
   --sl-max:      1280px;
-  --sl-radius:   6px;
+  --sl-radius:   0; /* Squared as per user preference */
 }
 
 /* ── Page wrapper ── */

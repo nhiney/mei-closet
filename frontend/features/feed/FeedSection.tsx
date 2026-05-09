@@ -1,5 +1,5 @@
-import { ProductGrid } from "@/components/ProductGrid";
-import { FeedError } from "@/components/FeedError";
+import { ProductGrid } from "@/components/product/ProductGrid";
+import { FeedError } from "@/components/product/FeedError";
 import { fetchProductsList, type ListProductsParams } from "@/lib/api/products";
 import { mapApiProductsToFeed } from "./mapApiProductToFeed";
 

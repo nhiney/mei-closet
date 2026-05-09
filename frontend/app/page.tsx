@@ -1,12 +1,12 @@
 import { Suspense } from "react"; // Home Page
-import { FeedSkeleton } from "@/components/FeedSkeleton";
+import { FeedSkeleton } from "@/components/product/FeedSkeleton";
 import { FeedSection } from "@/features/feed/FeedSection";
-import { Hero } from "@/components/Hero";
-import { FilterBar } from "@/components/FilterBar";
-import { PuzzleGame } from "@/components/PuzzleGame";
-import { StyleForecast } from "@/components/StyleForecast";
-import { AIAssistantHero } from "@/components/AIAssistantHero";
-import { NewArrivalSection } from "@/components/NewArrivalSection";
+import { Hero } from "@/components/sections/Hero";
+import { FilterBar } from "@/components/product/FilterBar";
+import { PuzzleGame } from "@/components/games/PuzzleGame";
+import { StyleForecast } from "@/components/ai/StyleForecast";
+import { AIAssistantHero } from "@/components/ai/AIAssistantHero";
+import { NewArrivalSection } from "@/components/sections/NewArrivalSection";
 import type { ListProductsParams } from "@/lib/api/products";
 
 type HomeProps = {

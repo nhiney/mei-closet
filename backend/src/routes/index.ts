@@ -6,6 +6,7 @@ import { chatRouter } from "./chatRoutes.js";
 import { productsRouter } from "./products.js";
 import { adminRouter } from "./adminRoutes.js";
 import { uploadRouter } from "./uploadRoutes.js";
+import { orderRouter } from "./orderRoutes.js";
 
 /** All paths are relative to mount point `/api`. */
 export const apiRouter = Router();
@@ -24,3 +25,4 @@ apiRouter.use("/chat", chatRouter);
 apiRouter.use("/ai", aiRouter);
 apiRouter.use("/admin", adminRouter);
 apiRouter.use("/upload", uploadRouter);
+apiRouter.use("/orders", orderRouter);

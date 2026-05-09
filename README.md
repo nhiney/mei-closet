@@ -33,7 +33,7 @@ A high-end, production-ready secondhand marketplace specifically designed for cl
 
 ### Backend (`backend/.env`)
 ```env
-PORT=4000
+PORT=3000
 MONGODB_URI=mongodb://localhost:27017/mei-closet
 JWT_SECRET=your_jwt_secret
 CLOUDINARY_CLOUD_NAME=your_cloud_name
@@ -43,7 +43,7 @@ CLOUDINARY_API_SECRET=your_api_secret
 
 ### Frontend (`frontend/.env.local`)
 ```env
-NEXT_PUBLIC_API_URL=http://localhost:4000/api
+NEXT_PUBLIC_API_URL=http://localhost:3000/api
 ```
 
 ## 🏃 Local Development

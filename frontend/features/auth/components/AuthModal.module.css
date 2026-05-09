@@ -1,0 +1,374 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(31, 45, 36, 0.4);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 20px;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.modal {
+  background: #fff;
+  width: 100%;
+  max-width: 1050px; /* Even larger as requested */
+  min-height: 650px;
+  border-radius: 32px;
+  overflow: hidden;
+  display: flex;
+  box-shadow: 0 40px 100px rgba(31, 45, 36, 0.2);
+  position: relative;
+  animation: modalScaleUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalScaleUp {
+  from { transform: scale(0.95) translateY(20px); opacity: 0; }
+  to { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+/* Left Side: Brand Panel */
+.imageSide {
+  width: 50%; /* Equal split for more impact */
+  position: relative;
+  overflow: hidden;
+  background: #1F2D24;
+}
+
+.brandImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.85;
+  transition: transform 15s ease-out;
+}
+
+.modal:hover .brandImg {
+  transform: scale(1.15);
+}
+
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(31, 45, 36, 0) 0%, rgba(31, 45, 36, 0.9) 100%);
+  padding: 80px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: white;
+}
+
+.imageBadge {
+  background: rgba(196, 150, 60, 0.9);
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  width: fit-content;
+  margin-bottom: 25px;
+  color: white;
+  text-transform: uppercase;
+}
+
+.imageTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem;
+  margin-bottom: 20px;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.imageText {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  line-height: 1.8;
+  font-weight: 300;
+  max-width: 400px;
+}
+
+.imageDots {
+  display: flex;
+  gap: 12px;
+  margin-top: 40px;
+}
+
+.imageDots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.imageDots .activeDot {
+  width: 40px;
+  border-radius: 4px;
+  background: #C4963C;
+}
+
+/* Right Side: Form Panel */
+.formSide {
+  flex: 1;
+  padding: 60px 80px; /* Spacious padding */
+  display: flex;
+  flex-direction: column;
+  background: #FDFBF7; /* Creamy white for premium feel */
+  position: relative;
+  overflow-y: auto;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  background: white;
+  border: 1px solid #EEE;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  color: #1F2D24;
+}
+
+.closeBtn:hover {
+  transform: rotate(90deg);
+  background: #1F2D24;
+  color: white;
+}
+
+.tabs {
+  display: flex;
+  gap: 40px;
+  margin-bottom: 60px;
+  border-bottom: 1px solid #EEE;
+}
+
+.tabBtn {
+  background: none;
+  border: none;
+  padding: 0 0 20px 0;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #BBB;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s;
+}
+
+.tabBtnActive {
+  color: #1F2D24;
+}
+
+.tabBtnActive::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #C4963C;
+}
+
+.header {
+  margin-bottom: 50px;
+}
+
+.welcomeTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.8rem;
+  color: #1F2D24;
+  margin-bottom: 15px;
+  letter-spacing: -0.01em;
+}
+
+.welcomeSub {
+  color: #888;
+  font-size: 1.1rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.labelRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.label {
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #1F2D24;
+}
+
+.forgotPass {
+  font-size: 0.85rem;
+  color: #C4963C;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.input {
+  width: 100%;
+  background: white;
+  border: 1px solid #E5E5E5;
+  padding: 18px 24px;
+  border-radius: 16px;
+  font-size: 1.1rem;
+  outline: none;
+  transition: all 0.3s;
+}
+
+.input:focus {
+  border-color: #C4963C;
+  box-shadow: 0 12px 30px rgba(196, 150, 60, 0.1);
+}
+
+.submitBtn {
+  width: 100%;
+  background: #1F2D24;
+  color: white;
+  padding: 20px;
+  border-radius: 16px;
+  font-weight: 700;
+  font-size: 1.2rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  margin-top: 10px;
+}
+
+.submitBtn:hover {
+  background: #C4963C;
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(196, 150, 60, 0.3);
+}
+
+.submitBtn:disabled {
+  opacity: 0.7;
+}
+
+.socialAuth {
+  margin-top: 50px;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.divider::before, .divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #EEE;
+}
+
+.divider span {
+  padding: 0 20px;
+  color: #AAA;
+  font-size: 0.9rem;
+}
+
+.socialBtns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.socialBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  padding: 16px;
+  border: 1px solid #EEE;
+  border-radius: 16px;
+  background: white;
+  color: #1F2D24;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+}
+
+.socialBtn:hover {
+  border-color: #C4963C;
+  background: #FDFBF7;
+  transform: translateY(-3px);
+}
+
+.footerNote {
+  margin-top: 50px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #AAA;
+}
+
+.footerNote a {
+  color: #1F2D24;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.errorMsg {
+  background: #FFF5F5;
+  color: #C53030;
+  padding: 15px 20px;
+  border-radius: 12px;
+  font-size: 1rem;
+  border-left: 5px solid #C53030;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 1024px) {
+  .modal {
+    max-width: 900px;
+  }
+  .imageSide {
+    width: 40%;
+  }
+  .imageTitle {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .imageSide {
+    display: none;
+  }
+  .modal {
+    max-width: 550px;
+  }
+  .formSide {
+    padding: 60px 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .formSide {
+    padding: 40px 20px;
+  }
+  .welcomeTitle {
+    font-size: 2.2rem;
+  }
+  .socialBtns {
+    grid-template-columns: 1fr;
+  }
+}

@@ -44,7 +44,7 @@ export function createApp() {
     });
   });
 
-  // Quick discovery when opening http://localhost:4000/api in the browser.
+  // Quick discovery when opening http://localhost:3000/api in the browser.
   app.get("/api", (_req, res) => {
     res.json({
       message: "Mei Closet API",

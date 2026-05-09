@@ -1,11 +1,14 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import { Montserrat, Playfair_Display, Dancing_Script } from "next/font/google";
-import { Navbar } from "@/components/Navbar";
-import { Footer } from "@/components/Footer";
-import { AiAdvisor } from "@/components/AiAdvisor";
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
+import { AiAdvisor } from "@/components/ai/AiAdvisor";
+import { ScrollToTop } from "@/components/ui/ScrollToTop";
 import { LanguageProvider } from "@/context/LanguageContext";
 import { CartProvider } from "@/context/CartContext";
+import { OrderProvider } from "@/context/OrderContext";
+import { ReviewProvider } from "@/context/ReviewContext";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -44,12 +47,17 @@ export default function RootLayout({
       <body className="flex min-h-full flex-col font-sans">
         <LanguageProvider>
           <CartProvider>
-            <Suspense fallback={<div style={{ height: "64px" }} />}>
-              <Navbar />
-            </Suspense>
-            <main className="flex-1">{children}</main>
-            <Footer />
-            <AiAdvisor />
+            <OrderProvider>
+              <ReviewProvider>
+                <Suspense fallback={<div style={{ height: "64px" }} />}>
+                  <Navbar />
+                </Suspense>
+                <main className="flex-1">{children}</main>
+                <Footer />
+                <AiAdvisor />
+                <ScrollToTop />
+              </ReviewProvider>
+            </OrderProvider>
           </CartProvider>
         </LanguageProvider>
       </body>

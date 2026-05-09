@@ -20,5 +20,5 @@ COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/package*.json ./
 RUN npm ci --omit=dev
 
-EXPOSE 4000
+EXPOSE 3000
 CMD ["npm", "start"]

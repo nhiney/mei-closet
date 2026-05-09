@@ -3,7 +3,7 @@
 import { useState, useEffect, useMemo, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ProductCard } from "@/components/ProductCard";
+import { ProductCard } from "@/components/product/ProductCard";
 import { fetchProductsList } from "@/lib/api/products";
 import { mapApiProductsToFeed } from "@/features/feed/mapApiProductToFeed";
 import type { FeedProduct } from "@/features/feed/types";
@@ -29,43 +29,7 @@ const CATEGORIES = [
   { id: "others",  label: "Váy & Phụ kiện",   count: "3" },
 ];
 
-const COLLECTIONS = [
-  {
-    id: "shirt",
-    name: "Áo Len",
-    category: "Knitwear",
-    count: "5 sản phẩm",
-    image: "/products/knitwear/xuong-ca.jpg",
-  },
-  {
-    id: "jacket",
-    name: "Cardigan",
-    category: "Knitwear",
-    count: "4 sản phẩm",
-    image: "/products/knitwear/tiencavotri.jpg",
-  },
-  {
-    id: "jacket",
-    name: "Áo Khoác Len",
-    category: "Knitwear",
-    count: "4 sản phẩm",
-    image: "/products/jackets/jacket-kesoc1.webp",
-  },
-  {
-    id: "pants",
-    name: "Quần Len",
-    category: "Knitwear",
-    count: "3 sản phẩm",
-    image: "/products/pants/jeans-wash-rong1.webp",
-  },
-  {
-    id: "others",
-    name: "Váy & Phụ kiện",
-    category: "Knitwear",
-    count: "3 sản phẩm",
-    image: "/products/skirts/aufra-1.webp",
-  },
-];
+
 
 const TICKER_ITEMS = [
   "Đan Tay Thủ Công",
@@ -93,7 +57,7 @@ export function ShopLenClient() {
   const [selectedCondition, setSelectedCondition] = useState<string | null>(null);
   const [sortBy, setSortBy] = useState("az");
   const [bannerIndex, setBannerIndex] = useState(0);
-  const scrollRef = useRef<HTMLDivElement>(null);
+
 
   /* auto-advance banner */
   useEffect(() => {
@@ -101,20 +65,7 @@ export function ShopLenClient() {
     return () => clearInterval(t);
   }, []);
 
-  /* drag-scroll for collection row */
-  useEffect(() => {
-    const el = scrollRef.current;
-    if (!el) return;
-    let isDown = false, startX = 0, scrollLeft = 0;
-    const onDown = (e: MouseEvent) => { isDown = true; startX = e.pageX - el.offsetLeft; scrollLeft = el.scrollLeft; };
-    const onUp = () => { isDown = false; };
-    const onMove = (e: MouseEvent) => { if (!isDown) return; e.preventDefault(); el.scrollLeft = scrollLeft - (e.pageX - el.offsetLeft - startX); };
-    el.addEventListener("mousedown", onDown);
-    el.addEventListener("mouseleave", onUp);
-    el.addEventListener("mouseup", onUp);
-    el.addEventListener("mousemove", onMove);
-    return () => { el.removeEventListener("mousedown", onDown); el.removeEventListener("mouseleave", onUp); el.removeEventListener("mouseup", onUp); el.removeEventListener("mousemove", onMove); };
-  }, []);
+
 
   useEffect(() => {
     async function load() {
@@ -218,33 +169,7 @@ export function ShopLenClient() {
         </div>
       </div>
 
-      {/* ════════════ COLLECTIONS ════════════ */}
-      <div className={styles.collectionSection}>
-        <div className={styles.sectionLabel}>
-          <span className={styles.sectionLabelLine} />
-          <span className={styles.sectionLabelText}>Danh mục nổi bật</span>
-        </div>
-        <h2 className={styles.collectionHeading}>
-          Khám phá từng<br />dòng sản phẩm
-        </h2>
-        <div className={styles.collectionScroll} ref={scrollRef}>
-          {COLLECTIONS.map((col, i) => (
-            <div
-              key={i}
-              className={styles.collectionCard}
-              onClick={() => { setActiveCategory(col.id); document.getElementById("shop-len-area")?.scrollIntoView({ behavior: "smooth" }); }}
-              style={{ cursor: "pointer" }}
-            >
-              <img src={col.image} alt={col.name} className={styles.collectionCardImage} />
-              <div className={styles.collectionCardFooter}>
-                <span className={styles.collectionCardCategory}>{col.category}</span>
-                <div className={styles.collectionCardName}>{col.name}</div>
-                <span className={styles.collectionCardCount}>{col.count}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+
 
       {/* ════════════ SHOP AREA ════════════ */}
       <div id="shop-len-area" className={styles.shopArea}>
