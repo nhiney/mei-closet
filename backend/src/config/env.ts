@@ -36,6 +36,15 @@ function bcryptRounds(): number {
   return Number.isFinite(n) && n >= 10 && n <= 15 ? n : 12;
 }
 
+function corsOrigin(): string | string[] {
+  const raw = process.env.CORS_ORIGIN?.trim() ?? "http://localhost:3001";
+  const list = raw
+    .split(",")
+    .map((o) => o.trim().replace(/\/$/, ""))
+    .filter(Boolean);
+  return list.length <= 1 ? list[0] ?? "http://localhost:3001" : list;
+}
+
 function openAiKey(): string | undefined {
   return process.env.OPENAI_API_KEY?.trim() || undefined;
 }
@@ -49,7 +58,12 @@ export const env = {
   isProd,
   PORT: port(),
   MONGODB_URI: mongoUri(),
-  CORS_ORIGIN: (process.env.CORS_ORIGIN?.trim() ?? "http://localhost:3001").replace(/\/$/, ""),
+  CORS_ORIGIN: corsOrigin(),
+  // Primary frontend URL (single value) for building redirect/callback links.
+  APP_URL: (() => {
+    const o = corsOrigin();
+    return Array.isArray(o) ? o[0] : o;
+  })(),
   JWT_SECRET: jwtSecret(),
   JWT_EXPIRES_IN: process.env.JWT_EXPIRES_IN?.trim() ?? "7d",
   BCRYPT_ROUNDS: bcryptRounds(),

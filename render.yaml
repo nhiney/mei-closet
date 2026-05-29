@@ -1,0 +1,53 @@
+# Render Blueprint — backend (Express + Socket.io)
+# Docs: https://render.com/docs/blueprint-spec
+# After connecting the repo, Render reads this file and provisions the service.
+# Secret values (sync: false) must be filled in the Render dashboard.
+services:
+  - type: web
+    name: mei-closet-api
+    runtime: node
+    plan: free
+    region: singapore # closest free region to Vietnam; change if you prefer
+    # Build/start run from the repo root so the npm workspace resolves.
+    buildCommand: npm install && npm run build -w backend
+    startCommand: npm run start -w backend
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      # Render injects PORT automatically; the server reads process.env.PORT.
+      - key: JWT_SECRET
+        generateValue: true # Render generates a strong random secret
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      # Comma-separated list of allowed frontend origins (no trailing slash).
+      # Fill with your Vercel URL after the frontend is deployed.
+      - key: CORS_ORIGIN
+        sync: false
+      # Public URL of THIS backend service (used for OAuth callbacks).
+      - key: BACKEND_URL
+        sync: false
+      - key: MONGODB_URI
+        sync: false
+      # --- Cloudinary (image uploads) — optional but recommended ---
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+      # --- OpenAI (AI descriptions) — optional ---
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_MODEL
+        value: gpt-4o-mini
+      # --- Social login — optional, leave blank to disable ---
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: GOOGLE_CLIENT_SECRET
+        sync: false
+      - key: FACEBOOK_APP_ID
+        sync: false
+      - key: FACEBOOK_APP_SECRET
+        sync: false

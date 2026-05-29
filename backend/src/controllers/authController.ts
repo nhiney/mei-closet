@@ -33,7 +33,7 @@ export async function getMe(req: Request, res: Response) {
 export async function oauthCallback(req: Request, res: Response) {
   const user = req.user as any;
   if (!user) {
-    res.redirect(`${env.CORS_ORIGIN}/login?error=OAuthFailed`);
+    res.redirect(`${env.APP_URL}/login?error=OAuthFailed`);
     return;
   }
 
@@ -41,7 +41,7 @@ export async function oauthCallback(req: Request, res: Response) {
   const { token } = await authService.issueToken(user._id.toString(), req.ip);
 
   // Redirect to success page with tokens
-  const redirectUrl = new URL(`${env.CORS_ORIGIN}/auth/success`);
+  const redirectUrl = new URL(`${env.APP_URL}/auth/success`);
   redirectUrl.searchParams.set("token", token);
   redirectUrl.searchParams.set("userId", user._id.toString());
   redirectUrl.searchParams.set("email", user.email);
