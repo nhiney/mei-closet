@@ -9,7 +9,7 @@ services:
     plan: free
     region: singapore # closest free region to Vietnam; change if you prefer
     # Build/start run from the repo root so the npm workspace resolves.
-    buildCommand: npm install && npm run build -w backend
+    buildCommand: npm install --include=dev && npm run build -w backend
     startCommand: npm run start -w backend
     healthCheckPath: /api/health
     autoDeploy: true
