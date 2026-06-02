@@ -108,8 +108,8 @@ export function EnhancedSidebarFilter({
         <div className={styles.priceSlider}>
           <input type="range" min="0" max="100" defaultValue="100" className={styles.rangeInput} />
           <div className={styles.priceLabels}>
-            <span>$0</span>
-            <span>$100+</span>
+            <span>0 ₫</span>
+            <span>500.000 ₫+</span>
           </div>
         </div>
       </div>

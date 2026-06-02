@@ -60,7 +60,7 @@ export function Navbar() {
           <Link href="/" className={styles.logoGroup}>
             <div className={styles.logoWrapper}>
               <Image
-                src="/logo-icon.png"
+                src="/logo-v2.png"
                 alt="Mei Closet Logo"
                 width={40}
                 height={40}

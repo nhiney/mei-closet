@@ -1,7 +1,7 @@
 export function formatUsd(price: number): string {
-  return new Intl.NumberFormat("en-US", {
+  return new Intl.NumberFormat("vi-VN", {
     style: "currency",
-    currency: "USD",
-    maximumFractionDigits: price % 1 === 0 ? 0 : 2,
+    currency: "VND",
+    maximumFractionDigits: 0,
   }).format(price);
 }

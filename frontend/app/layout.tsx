@@ -43,6 +43,7 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${montserrat.variable} ${playfair.variable} ${dancingScript.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
       <body className="flex min-h-full flex-col font-sans">
         <LanguageProvider>

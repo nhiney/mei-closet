@@ -237,13 +237,13 @@ export function UploadForm({ accessToken, email, role, onAuthLost }: Props) {
 
         <div className={styles.gridRow}>
           <div className={styles.fieldGroup}>
-            <label className={styles.label}>Price (USD)</label>
+            <label className={styles.label}>Giá (VND)</label>
             <input 
               className={styles.input}
               type="number"
               value={price}
               onChange={(e) => setPrice(e.target.value)}
-              placeholder="0.00"
+              placeholder="0"
               required 
             />
           </div>

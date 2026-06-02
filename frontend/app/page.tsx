@@ -1,6 +1,4 @@
-import { Suspense } from "react"; // Home Page
-import { FeedSkeleton } from "@/components/product/FeedSkeleton";
-import { FeedSection } from "@/features/feed/FeedSection";
+import { Suspense } from "react";
 import { Hero } from "@/components/sections/Hero";
 import { FilterBar } from "@/components/product/FilterBar";
 import { PuzzleGame } from "@/components/games/PuzzleGame";
@@ -30,18 +28,10 @@ export default async function Home({ searchParams }: HomeProps) {
       <Suspense fallback={null}>
         <FilterBar />
       </Suspense>
-      
       <main>
-        {/* Main Product Section */}
         <NewArrivalSection params={fetchParams} />
-
-        {/* Daily Style Forecast */}
         <StyleForecast />
-
-        {/* Fashion Puzzle Challenge */}
         <PuzzleGame />
-
-        {/* High-Impact AI Assistant Hero */}
         <AIAssistantHero />
       </main>
     </div>
