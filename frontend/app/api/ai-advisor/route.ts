@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
   try {
     const { messages } = await req.json();
 
-    const apiKey = process.env.ANTHROPIC_API_KEY;
+    const apiKey = process.env.OPENAI_API_KEY;
     if (!apiKey) {
       // Fallback: smart rule-based responses khi chưa có API key
       const lastMsg = (messages[messages.length - 1]?.content ?? "").toLowerCase();
@@ -34,32 +34,35 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ reply });
     }
 
-    const res = await fetch("https://api.anthropic.com/v1/messages", {
+    const chatMessages = Array.isArray(messages) ? messages : [];
+
+    const res = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-api-key": apiKey,
-        "anthropic-version": "2023-06-01",
+        Authorization: `Bearer ${apiKey}`,
       },
       body: JSON.stringify({
-        model: "claude-haiku-4-5-20251001",
+        model: process.env.OPENAI_MODEL ?? "gpt-4o-mini",
         max_tokens: 400,
-        system: SYSTEM_PROMPT,
-        messages: messages.map((m: { role: string; content: string }) => ({
-          role: m.role,
-          content: m.content,
-        })),
+        messages: [
+          { role: "system", content: SYSTEM_PROMPT },
+          ...chatMessages.map((m: { role?: string; content?: string }) => ({
+            role: m.role === "assistant" ? "assistant" : "user",
+            content: m.content ?? "",
+          })),
+        ],
       }),
     });
 
     if (!res.ok) {
       const err = await res.text();
-      console.error("Claude API error:", err);
+      console.error("AI provider error:", err);
       return NextResponse.json({ reply: "Xin lỗi, tôi đang gặp sự cố kỹ thuật. Bạn vui lòng thử lại sau nhé! 🙏" });
     }
 
     const data = await res.json();
-    const reply = data.content?.[0]?.text ?? "Tôi không hiểu câu hỏi, bạn có thể nói rõ hơn không? 😊";
+    const reply = data.choices?.[0]?.message?.content ?? "Tôi không hiểu câu hỏi, bạn có thể nói rõ hơn không? 😊";
     return NextResponse.json({ reply });
   } catch (err) {
     console.error("AI Advisor error:", err);
